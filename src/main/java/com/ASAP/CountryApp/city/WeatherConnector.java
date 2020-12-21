@@ -1,6 +1,5 @@
 package com.ASAP.CountryApp.city;
 
-import com.ASAP.CountryApp.country.Country;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -25,6 +24,6 @@ public class WeatherConnector {
         JSONObject mainData = response.getBody().getObject().getJSONObject("main");
         weather.setDescription(weatherData.get("description").toString());
         weather.setTemperature((int) Double.parseDouble(mainData.get("temp").toString()));
-        weather.setTemperature((int) Double.parseDouble(mainData.get("feels_like").toString()));
+        weather.setFeelsLike((int) Double.parseDouble(mainData.get("feels_like").toString()));
     }
 }
