@@ -10,4 +10,7 @@ public class City {
     private Country country;
     private String name;
     private String id;
+    private String latitude;
+    private String longitude;
+    private Weather weather;
 }

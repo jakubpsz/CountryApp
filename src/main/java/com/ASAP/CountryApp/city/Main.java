@@ -12,11 +12,18 @@ public class Main {
         CityConnector cityConnector = new CityConnector();
         CountryConnector countryConnector = new CountryConnector();
         Country country = countryConnector.getData("Poland");
-        TimeUnit.SECONDS.sleep(2);
-        City city = cityConnector.getData(country, "Gdansk");
+        TimeUnit.SECONDS.sleep(3);
+        City city = cityConnector.getData(country, "Warsaw");
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
         System.out.println(city.getId());
+        WeatherConnector weatherConnector = new WeatherConnector();
+        Weather weather = weatherConnector.getData(city);
+        city.setWeather(weather);
+        System.out.println(city.getWeather().getDescription());
+        System.out.println(city.getWeather().getTemperature() - 273);
+        System.out.println(city.getWeather().getFeelsLike() - 273);
+
     }
 
 }
