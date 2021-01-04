@@ -9,4 +9,6 @@ public class Weather {
     private int temperature;
     private int feelsLike;
     private String description;
+    private int pressure;
+    private double wind;
 }
