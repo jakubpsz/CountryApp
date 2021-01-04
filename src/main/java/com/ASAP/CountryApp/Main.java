@@ -10,7 +10,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.simple.parser.ParseException;
 
 import java.io.IOException;
-import java.util.Currency;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
@@ -27,8 +26,6 @@ public class Main {
 //        CountryAPI myCountry = new CountryAPI();
 //        myCountry.searchByCountry("poland");
 //
-//        CurrencyAPI course = new CurrencyAPI();
-//        course.currencyCourse("USD", "PLN");
 //
 //
 //
@@ -41,11 +38,16 @@ public class Main {
 
         CityConnector cityConnector = new CityConnector();
         CountryConnector countryConnector = new CountryConnector();
-        Country country = countryConnector.getData("Poland");
+        Country country = countryConnector.getData("Spain");
+        String currency = country.getCurrency().replace("[\"", "").replace("\"]", "");
+        System.out.println(currency);
 
-        TimeUnit.SECONDS.sleep(3);
+        CurrencyExchange course = new CurrencyExchange();
+        course.currencyCourse(currency, "PLN");
 
-        City city = cityConnector.getData(country, "Warsaw");
+        TimeUnit.SECONDS.sleep(2);
+
+        City city = cityConnector.getData(country, "Barcelona");
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
 
@@ -54,8 +56,10 @@ public class Main {
         city.setWeather(weather);
 
         System.out.println(city.getWeather().getDescription());
-        System.out.println(city.getWeather().getTemperature() - 273);
-        System.out.println(city.getWeather().getFeelsLike() - 273);
+        System.out.println(city.getWeather().getTemperature());
+        System.out.println(city.getWeather().getFeelsLike());
+        System.out.println(city.getWeather().getPressure());
+        System.out.println(city.getWeather().getWind());
 
     }
 }

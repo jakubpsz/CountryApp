@@ -6,8 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Country {
-    String wikiDataId;
-    String currency;
-    String code;
-    String name;
+    private String wikiDataId;
+    private String currency;
+    private String code;
+    private String name;
 }
