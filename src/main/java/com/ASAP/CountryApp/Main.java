@@ -1,7 +1,17 @@
 package com.ASAP.CountryApp;
 
+import com.ASAP.CountryApp.city.City;
+import com.ASAP.CountryApp.city.CityConnector;
+import com.ASAP.CountryApp.city.Weather;
+import com.ASAP.CountryApp.city.WeatherConnector;
+import com.ASAP.CountryApp.country.Country;
+import com.ASAP.CountryApp.country.CountryConnector;
+import com.mashape.unirest.http.exceptions.UnirestException;
+import org.json.simple.parser.ParseException;
+
 import java.io.IOException;
 import java.util.Currency;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 
@@ -12,7 +22,7 @@ public class Main {
 //
 //    https://rapidapi.com/webcams.travel/api/webcams-travel
 
-    public static void main(String[] args) throws IOException, InterruptedException {
+    public static void main(String[] args) throws IOException, InterruptedException, ParseException, UnirestException {
 
 //        CountryAPI myCountry = new CountryAPI();
 //        myCountry.searchByCountry("poland");
@@ -26,10 +36,26 @@ public class Main {
 //        WeatherAPI weather = new WeatherAPI();
 //        weather.currencyWeather();
 
-        CityAPI cityAPI = new CityAPI();
-        cityAPI.searchByCity("US");
+//        CityAPI cityAPI = new CityAPI();
+//        cityAPI.searchByCity("US");
 
+        CityConnector cityConnector = new CityConnector();
+        CountryConnector countryConnector = new CountryConnector();
+        Country country = countryConnector.getData("Poland");
 
+        TimeUnit.SECONDS.sleep(3);
+
+        City city = cityConnector.getData(country, "Warsaw");
+        System.out.println(city.getName());
+        System.out.println(city.getCountry().getName());
+
+        WeatherConnector weatherConnector = new WeatherConnector();
+        Weather weather = weatherConnector.getData(city);
+        city.setWeather(weather);
+
+        System.out.println(city.getWeather().getDescription());
+        System.out.println(city.getWeather().getTemperature() - 273);
+        System.out.println(city.getWeather().getFeelsLike() - 273);
 
     }
 }
