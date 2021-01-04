@@ -1,11 +1,12 @@
 package com.ASAP.CountryApp;
 
-import com.ASAP.CountryApp.city.City;
-import com.ASAP.CountryApp.city.CityConnector;
-import com.ASAP.CountryApp.city.Weather;
-import com.ASAP.CountryApp.city.WeatherConnector;
-import com.ASAP.CountryApp.country.Country;
-import com.ASAP.CountryApp.country.CountryConnector;
+import com.ASAP.CountryApp.currency.CurrencyExchangeParser;
+import com.ASAP.CountryApp.geoApi.City;
+import com.ASAP.CountryApp.geoApi.CityParser;
+import com.ASAP.CountryApp.weather.Weather;
+import com.ASAP.CountryApp.weather.WeatherParser;
+import com.ASAP.CountryApp.geoApi.Country;
+import com.ASAP.CountryApp.geoApi.CountryParser;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.simple.parser.ParseException;
 
@@ -36,23 +37,22 @@ public class Main {
 //        CityAPI cityAPI = new CityAPI();
 //        cityAPI.searchByCity("US");
 
-        CityConnector cityConnector = new CityConnector();
-        CountryConnector countryConnector = new CountryConnector();
-        Country country = countryConnector.getData("Spain");
+        CityParser cityParser = new CityParser();
+        CountryParser countryParser = new CountryParser();
+        Country country = countryParser.getData("Spain");
         String currency = country.getCurrency().replace("[\"", "").replace("\"]", "");
         System.out.println(currency);
 
-        CurrencyExchange course = new CurrencyExchange();
-        course.currencyCourse(currency, "PLN");
+        System.out.println(new CurrencyExchangeParser().getData(currency, "PLN"));
 
         TimeUnit.SECONDS.sleep(2);
 
-        City city = cityConnector.getData(country, "Barcelona");
+        City city = cityParser.getData(country, "Barcelona");
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
 
-        WeatherConnector weatherConnector = new WeatherConnector();
-        Weather weather = weatherConnector.getData(city);
+        WeatherParser weatherParser = new WeatherParser();
+        Weather weather = weatherParser.getData(city);
         city.setWeather(weather);
 
         System.out.println(city.getWeather().getDescription());

@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.city;
+package com.ASAP.CountryApp.weather;
 
 import lombok.Getter;
 import lombok.Setter;
