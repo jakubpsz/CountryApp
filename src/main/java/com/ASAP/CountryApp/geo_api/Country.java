@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.geoApi;
+package com.ASAP.CountryApp.geo_api;
 
 import lombok.Getter;
 import lombok.Setter;

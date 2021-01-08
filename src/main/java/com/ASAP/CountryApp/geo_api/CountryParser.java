@@ -1,6 +1,6 @@
-package com.ASAP.CountryApp.geoApi;
+package com.ASAP.CountryApp.geo_api;
 
-import com.ASAP.CountryApp.HttpClient;
+import com.ASAP.CountryApp.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;

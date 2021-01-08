@@ -1,7 +1,7 @@
 package com.ASAP.CountryApp.weather;
 
-import com.ASAP.CountryApp.HttpClient;
-import com.ASAP.CountryApp.geoApi.City;
+import com.ASAP.CountryApp.rest.HttpClient;
+import com.ASAP.CountryApp.geo_api.City;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;

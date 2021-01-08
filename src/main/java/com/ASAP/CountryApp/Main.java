@@ -1,12 +1,12 @@
 package com.ASAP.CountryApp;
 
 import com.ASAP.CountryApp.currency.CurrencyExchangeParser;
-import com.ASAP.CountryApp.geoApi.City;
-import com.ASAP.CountryApp.geoApi.CityParser;
+import com.ASAP.CountryApp.geo_api.City;
+import com.ASAP.CountryApp.geo_api.CityDataExtractor;
 import com.ASAP.CountryApp.weather.Weather;
 import com.ASAP.CountryApp.weather.WeatherParser;
-import com.ASAP.CountryApp.geoApi.Country;
-import com.ASAP.CountryApp.geoApi.CountryParser;
+import com.ASAP.CountryApp.geo_api.Country;
+import com.ASAP.CountryApp.geo_api.CountryParser;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.simple.parser.ParseException;
 
@@ -37,7 +37,7 @@ public class Main {
 //        CityAPI cityAPI = new CityAPI();
 //        cityAPI.searchByCity("US");
 
-        CityParser cityParser = new CityParser();
+        CityDataExtractor cityDataExtractor = new CityDataExtractor();
         CountryParser countryParser = new CountryParser();
         Country country = countryParser.getData("Spain");
         String currency = country.getCurrency().replace("[\"", "").replace("\"]", "");
@@ -47,7 +47,7 @@ public class Main {
 
         TimeUnit.SECONDS.sleep(2);
 
-        City city = cityParser.getData(country, "Barcelona");
+        City city = cityDataExtractor.getData(country, "Barcelona");
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
 
