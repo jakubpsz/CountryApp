@@ -6,18 +6,20 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import lombok.SneakyThrows;
 
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class HttpClient {
 
 
-
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
-        return Unirest.get("https://wft-geo-db.p.rapidapi.com/v1/geo/cities?countryIds=" + country.getWikiDataId() + "&namePrefix=" + cityName + "&types=CITY")
-                .header("x-rapidapi-key", "8112b02f25mshe599c7cd4323d07p14779ajsn5613d2018835")
-                .header("x-rapidapi-host", "wft-geo-db.p.rapidapi.com")
+        return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiDataId() + getProperty("cityNamePrefix") + cityName + getProperty("cityType"))
+                .header("x-rapidapi-key", getProperty("geoDbApiKey"))
+                .header("x-rapidapi-host", getProperty("geoDb"))
                 .asJson();
     }
 
@@ -37,5 +39,14 @@ public class HttpClient {
                 .header("x-rapidapi-key", "8112b02f25mshe599c7cd4323d07p14779ajsn5613d2018835")
                 .header("x-rapidapi-host", "currency-exchange.p.rapidapi.com")
                 .asString();
+    }
+
+    @SneakyThrows
+    private String getProperty(String key){
+        try(InputStream input = new FileInputStream("src/main/resources/http.properties")) {
+            Properties prop = new Properties();
+            prop.load(input);
+            return prop.getProperty(key);
+        }
     }
 }
