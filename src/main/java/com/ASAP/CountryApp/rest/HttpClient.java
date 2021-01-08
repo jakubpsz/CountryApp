@@ -12,21 +12,10 @@ import java.util.Properties;
 
 public class HttpClient {
 
-    private String properties(String key) {
-        InputStream input = getClass().getClassLoader().getResourceAsStream("http.properties"))
-        Properties properties = new Properties();
-        properties.load(input);
 
-        return link;
-    }
-
-
-    Properties properties2 = new Properties();
-    String proname = "http.properties";
-    String link1 = properties2.getProperty("link1");
 
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
-        return Unirest.get(link1 + country.getWikiDataId() + "&namePrefix=" + cityName + "&types=CITY")
+        return Unirest.get("https://wft-geo-db.p.rapidapi.com/v1/geo/cities?countryIds=" + country.getWikiDataId() + "&namePrefix=" + cityName + "&types=CITY")
                 .header("x-rapidapi-key", "8112b02f25mshe599c7cd4323d07p14779ajsn5613d2018835")
                 .header("x-rapidapi-host", "wft-geo-db.p.rapidapi.com")
                 .asJson();

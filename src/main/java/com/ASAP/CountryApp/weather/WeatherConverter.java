@@ -7,7 +7,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
 
-public class WeatherParser {
+public class WeatherConverter {
 
     public Weather getData(City city) throws UnirestException {
         Weather weather = new Weather();

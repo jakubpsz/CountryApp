@@ -4,7 +4,7 @@ import com.ASAP.CountryApp.currency.CurrencyExchangeParser;
 import com.ASAP.CountryApp.geo_api.City;
 import com.ASAP.CountryApp.geo_api.CityDataExtractor;
 import com.ASAP.CountryApp.weather.Weather;
-import com.ASAP.CountryApp.weather.WeatherParser;
+import com.ASAP.CountryApp.weather.WeatherConverter;
 import com.ASAP.CountryApp.geo_api.Country;
 import com.ASAP.CountryApp.geo_api.CountryParser;
 import com.mashape.unirest.http.exceptions.UnirestException;
@@ -51,7 +51,7 @@ public class Main {
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
 
-        WeatherParser weatherParser = new WeatherParser();
+        WeatherConverter weatherParser = new WeatherConverter();
         Weather weather = weatherParser.getData(city);
         city.setWeather(weather);
 

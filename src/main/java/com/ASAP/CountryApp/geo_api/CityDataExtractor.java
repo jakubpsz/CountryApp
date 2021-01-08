@@ -4,21 +4,17 @@ import com.ASAP.CountryApp.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import org.json.JSONObject;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 
 public class CityDataExtractor {
 
-    @Autowired
-    private HttpClient httpClient;
-    @Autowired
-    private ResponseConverter responseConverter;
+    private final HttpClient httpClient = new HttpClient();
+    private final ResponseConverter responseConverter = new ResponseConverter();
 
     public City getData(Country country, String cityName) throws ParseException, UnirestException {
-        City city = new City();
-        city.setCountry(country);
         HttpResponse<JsonNode> response = httpClient.getCityData(country, cityName);
+        City city = responseConverter.convertResponseToCity(response);
+        city.setCountry(country);
         return responseConverter.convertResponseToCity(response);
     }
 }
