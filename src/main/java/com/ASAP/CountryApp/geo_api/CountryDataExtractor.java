@@ -4,17 +4,13 @@ import com.ASAP.CountryApp.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import org.json.simple.parser.ParseException;
 
-public class CityDataExtractor {
-
+public class CountryDataExtractor {
     private final HttpClient httpClient = new HttpClient();
     private final ResponseConverter responseConverter = new ResponseConverter();
 
-    public City getData(Country country, String cityName) throws UnirestException {
-        HttpResponse<JsonNode> response = httpClient.getCityData(country, cityName);
-        City city = responseConverter.convertResponseToCity(response);
-        city.setCountry(country);
-        return city;
+    public Country getData(String countryName) throws UnirestException {
+        HttpResponse<JsonNode> response = httpClient.getCountryData(countryName);
+        return responseConverter.convertResponseToCountry(response);
     }
 }
