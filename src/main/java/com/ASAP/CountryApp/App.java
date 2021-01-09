@@ -19,6 +19,7 @@ public class App {
 
     public static void main(String[] args) throws UnirestException, InterruptedException, ParseException {
         SpringApplication.run(App.class, args);
+
         CityDataExtractor cityDataExtractor = new CityDataExtractor();
         CountryDataExtractor countryParser = new CountryDataExtractor();
         Country country = countryParser.getData("Spain");
