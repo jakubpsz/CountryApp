@@ -7,7 +7,7 @@ import org.json.JSONObject;
 class ResponseConverter {
     City convertResponseToCity(HttpResponse<JsonNode> response) {
         City city = new City();
-        JSONObject data = response.getBody().getObject().getJSONArray("data").getJSONObject(0);
+        JSONObject data = getJSONObjectFromResponse(response);
         city.setId(data.get("id").toString());
         city.setName(data.get("name").toString());
         city.setLatitude(data.get("latitude").toString());
