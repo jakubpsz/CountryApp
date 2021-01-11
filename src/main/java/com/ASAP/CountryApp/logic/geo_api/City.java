@@ -1,6 +1,6 @@
-package com.ASAP.CountryApp.geo_api;
+package com.ASAP.CountryApp.logic.geo_api;
 
-import com.ASAP.CountryApp.weather.Weather;
+import com.ASAP.CountryApp.logic.weather.Weather;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +13,5 @@ public class City {
     private String latitude;
     private String longitude;
     private Weather weather;
+    private String url;
 }

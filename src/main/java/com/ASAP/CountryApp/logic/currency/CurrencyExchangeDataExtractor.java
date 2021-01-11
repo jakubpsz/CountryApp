@@ -1,6 +1,6 @@
-package com.ASAP.CountryApp.currency;
+package com.ASAP.CountryApp.logic.currency;
 
-import com.ASAP.CountryApp.rest.HttpClient;
+import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 

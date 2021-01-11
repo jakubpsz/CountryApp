@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.weather;
+package com.ASAP.CountryApp.logic.weather;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
