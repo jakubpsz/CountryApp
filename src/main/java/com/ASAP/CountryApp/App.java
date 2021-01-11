@@ -6,10 +6,11 @@ import com.ASAP.CountryApp.geo_api.CityDataExtractor;
 import com.ASAP.CountryApp.geo_api.Country;
 import com.ASAP.CountryApp.geo_api.CountryDataExtractor;
 import com.ASAP.CountryApp.weather.Weather;
+import com.ASAP.CountryApp.weather.WeatherDataExtractor;
+import com.ASAP.CountryApp.wiki_data_api.WikiDataExtractor;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.simple.parser.ParseException;
 import org.springframework.boot.SpringApplication;
-import com.ASAP.CountryApp.weather.WeatherDataExtractor;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.concurrent.TimeUnit;
@@ -22,7 +23,7 @@ public class App {
 
         CityDataExtractor cityDataExtractor = new CityDataExtractor();
         CountryDataExtractor countryParser = new CountryDataExtractor();
-        Country country = countryParser.getData("Spain");
+        Country country = countryParser.getData("Poland");
         String currency = country.getCurrency().replace("[\"", "").replace("\"]", "");
         System.out.println(currency);
 
@@ -30,7 +31,7 @@ public class App {
 
         TimeUnit.SECONDS.sleep(2);
 
-        City city = cityDataExtractor.getData(country, "Barcelona");
+        City city = cityDataExtractor.getData(country, "Gdańsk");
         System.out.println(city.getName());
         System.out.println(city.getCountry().getName());
 
@@ -43,6 +44,10 @@ public class App {
         System.out.println(city.getWeather().getFeelsLike());
         System.out.println(city.getWeather().getPressure());
         System.out.println(city.getWeather().getWind());
+
+        WikiDataExtractor wikiDataExtractor = new WikiDataExtractor();
+        System.out.println(wikiDataExtractor.getData(city.getName()));
+
 
     }
 

@@ -7,6 +7,8 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.SneakyThrows;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
@@ -43,6 +45,16 @@ public class HttpClient {
                 .header(getProperty("keyHeaderName"), getProperty("rapidApiKey"))
                 .header(getProperty("hostHeaderName"), getProperty("currencyApiHost"))
                 .asString();
+    }
+
+    public HttpResponse<JsonNode> getWikiData(String cityName) throws UnirestException {
+        CloseableHttpClient httpClient = HttpClients.custom()
+                .disableCookieManagement()
+                .build();
+        Unirest.setHttpClient(httpClient);
+        return Unirest.get(getProperty("wikiDataMainUrl") + cityName
+                + getProperty("wikiDataUrlClose"))
+                .asJson();
     }
 
     @SneakyThrows
