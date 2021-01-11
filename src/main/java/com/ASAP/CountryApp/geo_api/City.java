@@ -13,4 +13,5 @@ public class City {
     private String latitude;
     private String longitude;
     private Weather weather;
+    private String url;
 }
