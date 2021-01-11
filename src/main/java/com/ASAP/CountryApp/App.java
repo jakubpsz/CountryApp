@@ -1,24 +1,12 @@
 package com.ASAP.CountryApp;
 
-import com.ASAP.CountryApp.currency.CurrencyExchangeDataExtractor;
-import com.ASAP.CountryApp.geo_api.City;
-import com.ASAP.CountryApp.geo_api.CityDataExtractor;
-import com.ASAP.CountryApp.geo_api.Country;
-import com.ASAP.CountryApp.geo_api.CountryDataExtractor;
-import com.ASAP.CountryApp.weather.Weather;
-import com.ASAP.CountryApp.weather.WeatherDataExtractor;
-import com.ASAP.CountryApp.wiki_data_api.WikiDataExtractor;
-import com.mashape.unirest.http.exceptions.UnirestException;
-import org.json.simple.parser.ParseException;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.concurrent.TimeUnit;
 
 @SpringBootApplication
 public class App {
 
-    public static void main(String[] args) throws UnirestException, InterruptedException, ParseException {
+    public static void main(String[] args) {
         SpringApplication.run(App.class, args);
 
 //        CityDataExtractor cityDataExtractor = new CityDataExtractor();

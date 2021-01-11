@@ -1,6 +1,6 @@
 package com.ASAP.CountryApp.controller;
 
-import com.ASAP.CountryApp.geo_api.City;
+import com.ASAP.CountryApp.logic.geo_api.City;
 import com.ASAP.CountryApp.service.CityService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

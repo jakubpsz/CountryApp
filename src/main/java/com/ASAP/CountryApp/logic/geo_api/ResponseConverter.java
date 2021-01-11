@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.geo_api;
+package com.ASAP.CountryApp.logic.geo_api;
 
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
