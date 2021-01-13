@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.logic.wiki_data_api;
+package com.ASAP.CountryApp.logic.wiki_data;
 
 import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;

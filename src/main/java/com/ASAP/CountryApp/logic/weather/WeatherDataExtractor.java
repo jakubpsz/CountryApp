@@ -1,6 +1,6 @@
 package com.ASAP.CountryApp.logic.weather;
 
-import com.ASAP.CountryApp.logic.geo_api.City;
+import com.ASAP.CountryApp.logic.geo.City;
 import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
