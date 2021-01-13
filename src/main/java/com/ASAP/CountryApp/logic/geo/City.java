@@ -1,4 +1,4 @@
-package com.ASAP.CountryApp.logic.geo_api;
+package com.ASAP.CountryApp.logic.geo;
 
 import com.ASAP.CountryApp.logic.weather.Weather;
 import lombok.Getter;

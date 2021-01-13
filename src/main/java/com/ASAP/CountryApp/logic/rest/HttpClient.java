@@ -1,7 +1,7 @@
 package com.ASAP.CountryApp.logic.rest;
 
-import com.ASAP.CountryApp.logic.geo_api.City;
-import com.ASAP.CountryApp.logic.geo_api.Country;
+import com.ASAP.CountryApp.logic.geo.City;
+import com.ASAP.CountryApp.logic.geo.Country;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
@@ -21,7 +21,7 @@ public class HttpClient {
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
         return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiDataId()
                 + getProperty("cityNamePrefix") + cityName + getProperty("cityType"))
-                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey"))
+                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey1"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
                 .asJson();
     }
@@ -35,7 +35,7 @@ public class HttpClient {
 
     public HttpResponse<JsonNode> getCountryData(String name) throws UnirestException {
         return Unirest.get(getProperty("countryDataMainUrl")+ name)
-                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey"))
+                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey2"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
                 .asJson();
     }
@@ -43,7 +43,7 @@ public class HttpClient {
     public HttpResponse<String> getCurrencyExchangeData(String from, String to) throws UnirestException {
         return Unirest.get(getProperty("currencyDataMainUrl") + from + getProperty("currencyToPrefix")
                 + to + getProperty("currencyUrlClose"))
-                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey"))
+                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey1"))
                 .header(getProperty("hostHeaderName"), getProperty("currencyApiHost"))
                 .asString();
     }
