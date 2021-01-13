@@ -13,4 +13,5 @@ public class Country {
     private String code;
     private String name;
     private double exchangeRate;
+    private String url;
 }
