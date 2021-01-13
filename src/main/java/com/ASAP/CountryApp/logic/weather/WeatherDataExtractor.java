@@ -5,6 +5,7 @@ import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,6 +14,7 @@ public class WeatherDataExtractor {
     private final HttpClient httpClient;
     private final ResponseConverterWeather responseConverterWeather;
 
+    @Autowired
     public WeatherDataExtractor(HttpClient httpClient, ResponseConverterWeather responseConverterWeather) {
         this.httpClient = httpClient;
         this.responseConverterWeather = responseConverterWeather;
