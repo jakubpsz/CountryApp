@@ -21,11 +21,14 @@ class ResponseConverterGeo {
     Country convertResponseToCountry(HttpResponse<JsonNode> response) {
         Country country = new Country();
         JSONObject data = getJSONObjectFromResponse(response);
-        country.setWikiDataId(data.get("wikiDataId").toString());
+        country.setWikiId(data.get("wikiDataId").toString());
         country.setCurrency(data.get("currencyCodes").toString());
         country.setName(data.get("name").toString());
         country.setCode(data.get("code").toString());
         return country;
+    }
+    String convertResponseToFlag(HttpResponse<JsonNode> response){
+        return response.getBody().getObject().getJSONObject("data").get("flagImageUri").toString();
     }
 
     private JSONObject getJSONObjectFromResponse(HttpResponse<JsonNode> response) {

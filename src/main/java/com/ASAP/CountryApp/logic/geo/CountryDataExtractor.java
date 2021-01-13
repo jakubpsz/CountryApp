@@ -10,8 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
+import java.util.concurrent.TimeUnit;
+
 @Component
-@ComponentScan (basePackages = "com.ASAP.CountryApp")
+@ComponentScan(basePackages = "com.ASAP.CountryApp")
 public class CountryDataExtractor {
 
     private HttpClient httpClient;
@@ -30,12 +32,18 @@ public class CountryDataExtractor {
     public CountryDataExtractor() {
     }
 
-    public Country getData(String countryName) throws UnirestException {
+    public Country getData(String countryName) throws UnirestException, InterruptedException {
         HttpResponse<JsonNode> response = httpClient.getCountryData(countryName);
-        Country country =  responseConverterGeo.convertResponseToCountry(response);
+        Country country = responseConverterGeo.convertResponseToCountry(response);
         country.setExchangeRate(Double.parseDouble(currencyExchangeDataExtractor.getData(country.getCurrency()
                 .replace("[\"", "").replace("\"]", ""), "PLN")));
-        country.setUrl(wikiDataExtractor.getData(countryName));
+        country.setWikipediaPage(wikiDataExtractor.getData(countryName));
+        addFlagToCountry(country);
         return country;
+    }
+
+    private void addFlagToCountry(Country country) throws UnirestException {
+        HttpResponse<JsonNode> flagResponse = httpClient.getFlag(country.getWikiId());
+        country.setFlag(responseConverterGeo.convertResponseToFlag(flagResponse));
     }
 }

@@ -8,10 +8,11 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class Country {
-    private String wikiDataId;
+    private String wikiId;
     private String currency;
     private String code;
     private String name;
     private double exchangeRate;
-    private String url;
+    private String wikipediaPage;
+    private String flag;
 }

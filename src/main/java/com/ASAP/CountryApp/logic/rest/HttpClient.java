@@ -19,7 +19,7 @@ import java.util.Properties;
 public class HttpClient {
 
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
-        return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiDataId()
+        return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiId()
                 + getProperty("cityNamePrefix") + cityName + getProperty("cityType"))
                 .header(getProperty("keyHeaderName"), getProperty("rapidApiKey1"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
@@ -34,7 +34,7 @@ public class HttpClient {
     }
 
     public HttpResponse<JsonNode> getCountryData(String name) throws UnirestException {
-        return Unirest.get(getProperty("countryDataMainUrl")+ name)
+        return Unirest.get(getProperty("countryDataMainUrl") + name)
                 .header(getProperty("keyHeaderName"), getProperty("rapidApiKey2"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
                 .asJson();
@@ -58,9 +58,17 @@ public class HttpClient {
                 .asJson();
     }
 
+    public HttpResponse<JsonNode> getFlag(String wikiId) throws UnirestException {
+        return Unirest.get(getProperty("flagDataUrl") + wikiId)
+                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey3"))
+                .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
+                .asJson();
+
+    }
+
     @SneakyThrows
-    private String getProperty(String key){
-        try(InputStream input = new FileInputStream("src/main/resources/http.properties")) {
+    private String getProperty(String key) {
+        try (InputStream input = new FileInputStream("src/main/resources/http.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             return prop.getProperty(key);
