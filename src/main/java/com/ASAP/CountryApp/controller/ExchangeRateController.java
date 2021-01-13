@@ -1,6 +1,5 @@
 package com.ASAP.CountryApp.controller;
 
-import com.ASAP.CountryApp.logic.geo.Country;
 import com.ASAP.CountryApp.service.ExchangeRate;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,7 +20,7 @@ public class ExchangeRateController {
         try {
             log.info("Exchange rate check from {} to {}", from, to);
             return exchangeRate.getExchangeRate(from, to);
-        }catch (Exception e){
+        } catch (Exception e) {
             log.error("Not able to get exchange rate from {} to {} error {}", from, to, e.getMessage());
             return null;
         }

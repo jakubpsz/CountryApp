@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 class ResponseConverterWeather {
-    Weather convertResponseToWeather(HttpResponse<JsonNode> response){
+    Weather convertResponseToWeather(HttpResponse<JsonNode> response) {
         Weather weather = new Weather();
         JSONObject weatherData = response.getBody().getObject().getJSONArray("weather").getJSONObject(0);
         JSONObject mainData = response.getBody().getObject().getJSONObject("main");

@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class CityDataExtractor {
 
-    private HttpClient httpClient;
-    private ResponseConverterGeo responseConverterGeo;
-    private WeatherDataExtractor weatherDataExtractor;
-    private WikiDataExtractor wikiDataExtractor;
-    private CountryDataExtractor countryDataExtractor;
+    private final HttpClient httpClient;
+    private final ResponseConverterGeo responseConverterGeo;
+    private final WeatherDataExtractor weatherDataExtractor;
+    private final WikiDataExtractor wikiDataExtractor;
+    private final CountryDataExtractor countryDataExtractor;
 
     @Autowired
     public CityDataExtractor(HttpClient httpClient, ResponseConverterGeo responseConverterGeo,
@@ -29,9 +29,6 @@ public class CityDataExtractor {
         this.countryDataExtractor = countryDataExtractor;
     }
 
-    public CityDataExtractor() {
-    }
-
     public City getData(String countryName, String cityName) throws UnirestException, InterruptedException {
         //get country
         Country country = countryDataExtractor.getData(countryName);
@@ -39,9 +36,7 @@ public class CityDataExtractor {
         HttpResponse<JsonNode> response = httpClient.getCityData(country, cityName);
         City city = responseConverterGeo.convertResponseToCity(response);
         city.setCountry(country);
-        //get and set weather
         city.setWeather(weatherDataExtractor.getData(city));
-        //get and set wikipedia link
         city.setWikipediaPage(wikiDataExtractor.getData(cityName));
         return city;
     }

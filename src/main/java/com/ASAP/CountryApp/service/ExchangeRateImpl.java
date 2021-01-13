@@ -5,7 +5,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ExchangeRateImpl implements ExchangeRate{
+public class ExchangeRateImpl implements ExchangeRate {
     private final CurrencyExchangeDataExtractor currencyExchangeDataExtractor;
 
     public ExchangeRateImpl(CurrencyExchangeDataExtractor currencyExchangeDataExtractor) {

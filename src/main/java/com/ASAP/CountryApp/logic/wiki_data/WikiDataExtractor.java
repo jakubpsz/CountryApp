@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class WikiDataExtractor {
     public String getData(String cityName) throws UnirestException {
         HttpResponse<JsonNode> response = new HttpClient().getWikiData(cityName);
-        JSONObject jsonObject =  response.getBody().getObject().getJSONObject("query").getJSONObject("pages");
+        JSONObject jsonObject = response.getBody().getObject().getJSONObject("query").getJSONObject("pages");
         String jsonKey = jsonObject.keySet().stream().findFirst().orElseThrow();
         return jsonObject.getJSONObject(jsonKey).get("fullurl").toString();
     }

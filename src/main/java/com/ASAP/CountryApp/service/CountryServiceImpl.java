@@ -6,15 +6,16 @@ import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CountryService {
+public class CountryServiceImpl implements CountryService {
 
-    private CountryDataExtractor countryDataExtractor;
+    private final CountryDataExtractor countryDataExtractor;
 
-    public CountryService(CountryDataExtractor countryDataExtractor) {
+    public CountryServiceImpl(CountryDataExtractor countryDataExtractor) {
         this.countryDataExtractor = countryDataExtractor;
     }
 
     @SneakyThrows
+    @Override
     public Country getCountry(String countryName) {
         return countryDataExtractor.getData(countryName);
     }
