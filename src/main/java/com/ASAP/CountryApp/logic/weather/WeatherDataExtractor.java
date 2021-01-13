@@ -5,14 +5,16 @@ import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WeatherDataExtractor {
 
     private final HttpClient httpClient = new HttpClient();
-    private final ResponseConverter responseConverter = new ResponseConverter();
+    private final ResponseConverterWeather responseConverterWeather = new ResponseConverterWeather();
 
     public Weather getData(City city) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getWeatherData(city);
-        return responseConverter.convertResponseToWeather(response);
+        return responseConverterWeather.convertResponseToWeather(response);
     }
 }

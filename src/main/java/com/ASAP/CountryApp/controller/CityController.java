@@ -8,8 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class CityController {
 
     private final CityService cityService;
@@ -20,7 +21,6 @@ public class CityController {
     }
 
     @GetMapping("/city")
-    @ResponseBody
     public City getInfoForTheCity(@RequestParam(name = "country") String countryName,@RequestParam(name = "city") String cityName) {
         try {
             logger.info("City info checked country={} city={}",countryName, cityName);
