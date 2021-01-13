@@ -35,7 +35,7 @@ public class CountryDataExtractor {
         Country country =  responseConverterGeo.convertResponseToCountry(response);
         country.setExchangeRate(Double.parseDouble(currencyExchangeDataExtractor.getData(country.getCurrency()
                 .replace("[\"", "").replace("\"]", ""), "PLN")));
-        country.setUrl(wikiDataExtractor.getData(countryName));
+        country.setWikipediaPage(wikiDataExtractor.getData(countryName));
         return country;
     }
 }

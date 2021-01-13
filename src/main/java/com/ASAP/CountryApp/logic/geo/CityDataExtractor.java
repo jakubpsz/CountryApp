@@ -9,8 +9,6 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.TimeUnit;
-
 @Component
 public class CityDataExtractor {
 
@@ -44,7 +42,7 @@ public class CityDataExtractor {
         //get and set weather
         city.setWeather(weatherDataExtractor.getData(city));
         //get and set wikipedia link
-        city.setUrl(wikiDataExtractor.getData(cityName));
+        city.setWikipediaPage(wikiDataExtractor.getData(cityName));
         return city;
     }
 }

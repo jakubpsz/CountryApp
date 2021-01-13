@@ -21,7 +21,7 @@ class ResponseConverterGeo {
     Country convertResponseToCountry(HttpResponse<JsonNode> response) {
         Country country = new Country();
         JSONObject data = getJSONObjectFromResponse(response);
-        country.setWikiDataId(data.get("wikiDataId").toString());
+        country.setWikiId(data.get("wikiDataId").toString());
         country.setCurrency(data.get("currencyCodes").toString());
         country.setName(data.get("name").toString());
         country.setCode(data.get("code").toString());

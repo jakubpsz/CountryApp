@@ -19,7 +19,7 @@ import java.util.Properties;
 public class HttpClient {
 
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
-        return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiDataId()
+        return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiId()
                 + getProperty("cityNamePrefix") + cityName + getProperty("cityType"))
                 .header(getProperty("keyHeaderName"), getProperty("rapidApiKey1"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
@@ -55,6 +55,12 @@ public class HttpClient {
         Unirest.setHttpClient(httpClient);
         return Unirest.get(getProperty("wikiDataMainUrl") + cityName
                 + getProperty("wikiDataUrlClose"))
+                .asJson();
+    }
+    public HttpResponse<JsonNode> getFlag(String wikiId) throws UnirestException {
+        return Unirest.get("https://wft-geo-db.p.rapidapi.com/v1/geo/countries/Q36")
+                .header("x-rapidapi-key", "8112b02f25mshe599c7cd4323d07p14779ajsn5613d2018835")
+                .header("x-rapidapi-host", "wft-geo-db.p.rapidapi.com")
                 .asJson();
     }
 
