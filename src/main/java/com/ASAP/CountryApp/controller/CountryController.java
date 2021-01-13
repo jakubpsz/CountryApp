@@ -1,8 +1,6 @@
 package com.ASAP.CountryApp.controller;
 
-import com.ASAP.CountryApp.logic.geo.City;
 import com.ASAP.CountryApp.logic.geo.Country;
-import com.ASAP.CountryApp.service.CityService;
 import com.ASAP.CountryApp.service.CountryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
