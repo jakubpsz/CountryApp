@@ -10,8 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class WeatherDataExtractor {
 
-    private final HttpClient httpClient = new HttpClient();
-    private final ResponseConverterWeather responseConverterWeather = new ResponseConverterWeather();
+    private final HttpClient httpClient;
+    private final ResponseConverterWeather responseConverterWeather;
+
+    public WeatherDataExtractor(HttpClient httpClient, ResponseConverterWeather responseConverterWeather) {
+        this.httpClient = httpClient;
+        this.responseConverterWeather = responseConverterWeather;
+    }
 
     public Weather getData(City city) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getWeatherData(city);

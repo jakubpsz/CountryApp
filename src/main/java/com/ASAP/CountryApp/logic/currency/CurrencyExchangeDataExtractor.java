@@ -12,4 +12,7 @@ public class CurrencyExchangeDataExtractor {
         HttpResponse<String> response = new HttpClient().getCurrencyExchangeData(from, to);
         return response.getBody();
     }
+
+
+
 }

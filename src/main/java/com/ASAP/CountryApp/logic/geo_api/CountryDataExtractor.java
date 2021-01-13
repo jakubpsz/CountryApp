@@ -13,12 +13,12 @@ import org.springframework.stereotype.Component;
 public class CountryDataExtractor {
 
     private HttpClient httpClient;
-    private ResponseConverter responseConverter;
+    private ResponseConverterGeo responseConverterGeo;
 
     @Autowired
-    public CountryDataExtractor(HttpClient httpClient, ResponseConverter responseConverter) {
+    public CountryDataExtractor(HttpClient httpClient, ResponseConverterGeo responseConverterGeo) {
         this.httpClient = httpClient;
-        this.responseConverter = responseConverter;
+        this.responseConverterGeo = responseConverterGeo;
     }
 
     public CountryDataExtractor() {
@@ -26,6 +26,6 @@ public class CountryDataExtractor {
 
     public Country getData(String countryName) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getCountryData(countryName);
-        return responseConverter.convertResponseToCountry(response);
+        return responseConverterGeo.convertResponseToCountry(response);
     }
 }

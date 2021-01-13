@@ -15,17 +15,17 @@ import java.util.concurrent.TimeUnit;
 public class CityDataExtractor {
 
     private HttpClient httpClient;
-    private ResponseConverter responseConverter;
+    private ResponseConverterGeo responseConverterGeo;
     private WeatherDataExtractor weatherDataExtractor;
     private WikiDataExtractor wikiDataExtractor;
     private CountryDataExtractor countryDataExtractor;
 
     @Autowired
-    public CityDataExtractor(HttpClient httpClient, ResponseConverter responseConverter,
+    public CityDataExtractor(HttpClient httpClient, ResponseConverterGeo responseConverterGeo,
                              WeatherDataExtractor weatherDataExtractor, WikiDataExtractor wikiDataExtractor,
                              CountryDataExtractor countryDataExtractor) {
         this.httpClient = httpClient;
-        this.responseConverter = responseConverter;
+        this.responseConverterGeo = responseConverterGeo;
         this.weatherDataExtractor = weatherDataExtractor;
         this.wikiDataExtractor = wikiDataExtractor;
         this.countryDataExtractor = countryDataExtractor;
@@ -40,7 +40,7 @@ public class CityDataExtractor {
         TimeUnit.SECONDS.sleep(2);
         //get city info
         HttpResponse<JsonNode> response = httpClient.getCityData(country, cityName);
-        City city = responseConverter.convertResponseToCity(response);
+        City city = responseConverterGeo.convertResponseToCity(response);
         city.setCountry(country);
         //get and set weather
         city.setWeather(weatherDataExtractor.getData(city));

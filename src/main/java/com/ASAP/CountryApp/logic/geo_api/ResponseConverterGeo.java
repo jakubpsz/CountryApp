@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component
-class ResponseConverter {
+class ResponseConverterGeo {
 
     City convertResponseToCity(HttpResponse<JsonNode> response) {
         City city = new City();
