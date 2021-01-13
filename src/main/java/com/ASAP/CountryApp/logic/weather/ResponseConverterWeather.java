@@ -3,9 +3,10 @@ package com.ASAP.CountryApp.logic.weather;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
-
-class ResponseConverter {
+@Component
+class ResponseConverterWeather {
     Weather convertResponseToWeather(HttpResponse<JsonNode> response){
         Weather weather = new Weather();
         JSONObject weatherData = response.getBody().getObject().getJSONArray("weather").getJSONObject(0);

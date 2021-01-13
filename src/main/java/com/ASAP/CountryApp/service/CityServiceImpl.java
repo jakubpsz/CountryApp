@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class CityServiceImpl implements CityService {
 
-    private final CityDataExtractor cityDataExtractor = new CityDataExtractor();
+    private final CityDataExtractor cityDataExtractor;
+
+    public CityServiceImpl(CityDataExtractor cityDataExtractor) {
+        this.cityDataExtractor = cityDataExtractor;
+    }
 
     @SneakyThrows
     @Override
