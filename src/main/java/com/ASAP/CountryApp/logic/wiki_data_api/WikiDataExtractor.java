@@ -5,7 +5,9 @@ import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.json.JSONObject;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WikiDataExtractor {
     public String getData(String cityName) throws UnirestException {
         HttpResponse<JsonNode> response = new HttpClient().getWikiData(cityName);

@@ -5,7 +5,9 @@ import com.ASAP.CountryApp.logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.stereotype.Component;
 
+@Component
 public class WeatherDataExtractor {
 
     private final HttpClient httpClient = new HttpClient();

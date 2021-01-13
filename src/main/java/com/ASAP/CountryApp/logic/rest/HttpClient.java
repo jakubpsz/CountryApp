@@ -9,13 +9,14 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.SneakyThrows;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.springframework.stereotype.Component;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
+@Component
 public class HttpClient {
-
 
     public HttpResponse<JsonNode> getCityData(Country country, String cityName) throws UnirestException {
         return Unirest.get(getProperty("cityDataMainUrl") + country.getWikiDataId()

@@ -6,16 +6,33 @@ import com.ASAP.CountryApp.logic.wiki_data_api.WikiDataExtractor;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.TimeUnit;
 
+@Component
 public class CityDataExtractor {
 
-    private final HttpClient httpClient = new HttpClient();
-    private final ResponseConverter responseConverter = new ResponseConverter();
-    private final WeatherDataExtractor weatherDataExtractor = new WeatherDataExtractor();
-    private final WikiDataExtractor wikiDataExtractor = new WikiDataExtractor();
-    private final CountryDataExtractor countryDataExtractor = new CountryDataExtractor();
+    private HttpClient httpClient;
+    private ResponseConverter responseConverter;
+    private WeatherDataExtractor weatherDataExtractor;
+    private WikiDataExtractor wikiDataExtractor;
+    private CountryDataExtractor countryDataExtractor;
+
+    @Autowired
+    public CityDataExtractor(HttpClient httpClient, ResponseConverter responseConverter,
+                             WeatherDataExtractor weatherDataExtractor, WikiDataExtractor wikiDataExtractor,
+                             CountryDataExtractor countryDataExtractor) {
+        this.httpClient = httpClient;
+        this.responseConverter = responseConverter;
+        this.weatherDataExtractor = weatherDataExtractor;
+        this.wikiDataExtractor = wikiDataExtractor;
+        this.countryDataExtractor = countryDataExtractor;
+    }
+
+    public CityDataExtractor() {
+    }
 
     public City getData(String countryName, String cityName) throws UnirestException, InterruptedException {
         //get country

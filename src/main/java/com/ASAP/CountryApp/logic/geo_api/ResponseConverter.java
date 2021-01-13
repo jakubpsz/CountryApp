@@ -3,8 +3,12 @@ package com.ASAP.CountryApp.logic.geo_api;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import org.json.JSONObject;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.stereotype.Component;
 
+@Component
 class ResponseConverter {
+
     City convertResponseToCity(HttpResponse<JsonNode> response) {
         City city = new City();
         JSONObject data = getJSONObjectFromResponse(response);
