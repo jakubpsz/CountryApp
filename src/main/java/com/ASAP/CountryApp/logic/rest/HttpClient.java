@@ -34,7 +34,7 @@ public class HttpClient {
     }
 
     public HttpResponse<JsonNode> getCountryData(String name) throws UnirestException {
-        return Unirest.get(getProperty("countryDataMainUrl")+ name)
+        return Unirest.get(getProperty("countryDataMainUrl") + name)
                 .header(getProperty("keyHeaderName"), getProperty("rapidApiKey2"))
                 .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
                 .asJson();
@@ -57,16 +57,18 @@ public class HttpClient {
                 + getProperty("wikiDataUrlClose"))
                 .asJson();
     }
+
     public HttpResponse<JsonNode> getFlag(String wikiId) throws UnirestException {
-        return Unirest.get("https://wft-geo-db.p.rapidapi.com/v1/geo/countries/Q36")
-                .header("x-rapidapi-key", "8112b02f25mshe599c7cd4323d07p14779ajsn5613d2018835")
-                .header("x-rapidapi-host", "wft-geo-db.p.rapidapi.com")
+        return Unirest.get(getProperty("flagDataUrl") + wikiId)
+                .header(getProperty("keyHeaderName"), getProperty("rapidApiKey3"))
+                .header(getProperty("hostHeaderName"), getProperty("geoDbHost"))
                 .asJson();
+
     }
 
     @SneakyThrows
-    private String getProperty(String key){
-        try(InputStream input = new FileInputStream("src/main/resources/http.properties")) {
+    private String getProperty(String key) {
+        try (InputStream input = new FileInputStream("src/main/resources/http.properties")) {
             Properties prop = new Properties();
             prop.load(input);
             return prop.getProperty(key);
