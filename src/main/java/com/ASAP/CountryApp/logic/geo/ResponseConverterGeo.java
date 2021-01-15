@@ -27,7 +27,8 @@ class ResponseConverterGeo {
         country.setCode(data.get("code").toString());
         return country;
     }
-    String convertResponseToFlag(HttpResponse<JsonNode> response){
+
+    String convertResponseToFlag(HttpResponse<JsonNode> response) {
         return response.getBody().getObject().getJSONObject("data").get("flagImageUri").toString();
     }
 

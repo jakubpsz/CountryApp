@@ -10,16 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.TimeUnit;
-
 @Component
 @ComponentScan(basePackages = "com.ASAP.CountryApp")
 public class CountryDataExtractor {
 
-    private HttpClient httpClient;
-    private ResponseConverterGeo responseConverterGeo;
-    private CurrencyExchangeDataExtractor currencyExchangeDataExtractor;
-    private WikiDataExtractor wikiDataExtractor;
+    private final HttpClient httpClient;
+    private final ResponseConverterGeo responseConverterGeo;
+    private final CurrencyExchangeDataExtractor currencyExchangeDataExtractor;
+    private final WikiDataExtractor wikiDataExtractor;
 
     @Autowired
     public CountryDataExtractor(HttpClient httpClient, ResponseConverterGeo responseConverterGeo, CurrencyExchangeDataExtractor currencyExchangeDataExtractor, WikiDataExtractor wikiDataExtractor) {
@@ -27,9 +25,6 @@ public class CountryDataExtractor {
         this.responseConverterGeo = responseConverterGeo;
         this.currencyExchangeDataExtractor = currencyExchangeDataExtractor;
         this.wikiDataExtractor = wikiDataExtractor;
-    }
-
-    public CountryDataExtractor() {
     }
 
     public Country getData(String countryName) throws UnirestException, InterruptedException {
