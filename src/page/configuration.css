@@ -30,7 +30,7 @@ header {
     display: inline-block;
     padding: 15px;
     background-color: beige;
-    margin: 55px 100px 40px 0px;
+    margin: 55px 50px 40px 0px;
 }
 
 .header__logo {
@@ -49,15 +49,20 @@ header {
     font-family: 'Potta One', cursive;
     font-size: 40px;
     margin: auto;
+}
 
-
+.form-control {
+    width: 400px;
 
 }
 
-
-
-
-
+.find {
+    float: right;
+    display: inline-block;
+    padding: 35px;
+    background-color: beige;
+    margin: 55px 50px 40px 0px;
+}Z
 
 
 
