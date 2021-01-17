@@ -13,12 +13,9 @@ function buttonFind(event) {
         .then(cityInfo => {
             console.log('Created table');
 
-            // document.getElementsByClassName("tbody").innerHTML =
-            //     cityInfo.name;
-
             tableBody.innerHTML = `
-<div class="container">
-    <div class="row">
+<div class="container ">
+    <div class="row ">
         <div class="col-md-7 ">
             <div class="panel panel-default">
                 <div class="panel-heading">  <h4 >${cityInfo.country.name}</h4></div>
@@ -26,22 +23,19 @@ function buttonFind(event) {
                     <div class="box box-info">
                         <div class="box-body">
                             <div class="col-sm-6">
-                                <div  align="center"> <img alt="User Pic" id="profile-image1" class="img-circle img-responsive">
+                                <div  align="center"> <img alt="User Pic" src="` + cityInfo.country.flag + `" id="profile-image1" style="border-radius: 10px;">
 
-                                    <input class="hidden" type="file">
-                                    <a src="` + cityInfo.country.flag + `" >
                                 </div>
                                 <br>
                                 <!-- /input-group -->
                             </div>
                             <div class="col-sm-6">
                                 <h4 style="color:#00b1b1;">${cityInfo.name}</h4></span>
-                                <span>Id: ${cityInfo.country.wikiId}</span>
                             </div>
                             <div class="clearfix"></div>
                             <hr style="margin:5px 0 5px 0;">
 
-                            <div class="col-sm-5 col-xs-6 tital " >Currency:</div>
+                            <div class="col-sm-5 col-xs-6 tital" >Currency:</div>
                             <div class="col-sm-7 col-xs-6 ">${cityInfo.country.currency}</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
@@ -54,10 +48,6 @@ function buttonFind(event) {
                             <div class="col-sm-5 col-xs-6 tital " >Localization:</div>
                             <div class="col-sm-7">${cityInfo.latitude}</div>
                             <div class="col-sm-7">${cityInfo.longitude}</div>
-                            <div class="clearfix"></div>
-                            <div class="bot-border"></div>
-
-                            <div class="col-sm-5 col-xs-6 tital " >Relition:</div><div class="col-sm-7">Hindu</div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
@@ -66,7 +56,7 @@ function buttonFind(event) {
             </div>
         </div>
         
-        <div class="container">
+<div class="container">
     <div class="row">
         <div class="col-md-7 ">
             <div class="panel panel-default">
@@ -91,7 +81,7 @@ function buttonFind(event) {
                             <div class="bot-border"></div>
                             
                             <div class="col-sm-5 col-xs-6 tital " >Pressure:</div>
-                            <div class="col-sm-7">${cityInfo.weather.pressure}Pa</div>
+                            <div class="col-sm-7">${cityInfo.weather.pressure} hPa</div>
                             <div class="clearfix"></div>
                             <div class="bot-border"></div>
                             
@@ -108,7 +98,7 @@ function buttonFind(event) {
     <div class="row">
         <div class="col-md-7 ">
             <div class="panel panel-default">
-                        <div class="panel-heading">  <h4 >Other:</h4></div>
+             <div class="panel-heading">  <h4 >Other:</h4></div>
                 <div class="panel-body">
                     <div class="box box-info">
                         <div class="box-body">
@@ -127,10 +117,6 @@ function buttonFind(event) {
             </div>
         </div>
     `;
-
-
-            // document.getElementById("flag").setAttribute("href", cityInfo.country.flag);
-
         })
 };
 

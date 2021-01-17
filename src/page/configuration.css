@@ -7,7 +7,6 @@ body {
 
 }
 
-
 .page {
     position: center;
     width: 1200px;
@@ -55,7 +54,6 @@ header {
 
 .form-control {
     width: 400px;
-
 }
 
 .find {
@@ -93,6 +91,9 @@ input.hidden {
 
 .bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
 
-
+/*.city_field {*/
+/*    float: left;*/
+/*    display: inline-block;*/
+/*}*/
 
 
