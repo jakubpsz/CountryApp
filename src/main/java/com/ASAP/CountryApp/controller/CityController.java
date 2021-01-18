@@ -1,6 +1,5 @@
 package com.ASAP.CountryApp.controller;
 
-import com.ASAP.CountryApp.logic.geo.City;
 import com.ASAP.CountryApp.service.CityService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
