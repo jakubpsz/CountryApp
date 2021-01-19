@@ -9,18 +9,14 @@ import java.util.ArrayList;
 @Getter
 public class User {
 
-    private String nickName;
-    private String password;
-    private String name;
-    private String lastName;
     private String mail;
-    private String dateOfBirth;
-    private String codeOfCountry;
-    private String currency;
+    private String password;
+
+    private UserInfo userInfo;
     private ArrayList<Location> places;
 
-    public User(String password, String mail) {
-        this.password = password;
+    public User(String mail, String password) {
         this.mail = mail;
+        this.password = password;
     }
 }

@@ -4,7 +4,6 @@ body {
     background-attachment: fixed;
     background-position: center;
     margin: 0 auto;
-
 }
 
 .page {
@@ -43,7 +42,6 @@ header {
 
 .logo2 {
     font-size: 120px;
-
 }
 
 .header__CountryApp {
@@ -61,12 +59,12 @@ header {
     display: inline-block;
     padding: 35px;
     background-color: beige;
-    margin: 55px 50px 40px 0px;
+
 }
 
 footer {
     background-color: olive;
-    height:100px;
+    height: 100px;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -82,23 +80,47 @@ input.hidden {
 
 #profile-image1 {
     cursor: pointer;
-
     width: 150px;
     height: 100px;
-    border:2px solid #03b1ce ;}
+    border: 2px solid #03b1ce;
+}
 
-.tital{ font-size:16px; font-weight:500;}
+.tital {
+    font-size: 16px;
+    font-weight: 500;
+}
 
-.bot-border{ border-bottom:1px #f8f8f8 solid;  margin:5px 0  5px 0}
+.bot-border {
+    border-bottom: 1px #f8f8f8 solid;
+    margin: 5px 0 5px 0
+}
 
 /*.city_field {*/
 /*    float: left;*/
 /*    display: inline-block;*/
 /*}*/
-
 /*.container {*/
 /*    display: inline-block;*/
 /*    float:left;*/
-
 /*}*/
+.tbody {
+    margin-bottom: 5000px;
+}
+
+#parent {
+    list-style: none;
+    width: 100%;
+    margin-top: 60px;
+    margin-right: 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#parent > li {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    float: right;
+}
+
 
