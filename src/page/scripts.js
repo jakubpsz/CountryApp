@@ -24,7 +24,7 @@ function buttonFind(event) {
                     <div class="box box-info">
                         <div class="box-body">
                             <div class="col-sm-6">
-                                <div  align="center"> <img alt="User Pic" src="` + cityInfo.country.flag + `" id="profile-image1" style="border-radius: 10px;">
+                                <div  align="center"> <img alt="User Pic" src="` + cityInfo.country.flagUrl + `" id="profile-image1" style="border-radius: 10px;">
 
                                 </div>
                                 <br>
