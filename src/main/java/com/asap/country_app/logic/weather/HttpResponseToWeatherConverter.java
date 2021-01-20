@@ -6,9 +6,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 @Component
-//TODO HttpResponseToWeatherConverter
-    //TODO ResponseWeatherConverter
-class ResponseConverterWeather {
+class HttpResponseToWeatherConverter {
 
     private static final int KELVIN_DEGREE_OFFSET = 273;
 

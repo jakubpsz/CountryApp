@@ -2,7 +2,7 @@ package com.asap.country_app.service;
 
 import com.asap.country_app.logic.geo.City;
 import com.asap.country_app.logic.geo.CityDataExtractor;
-import lombok.SneakyThrows;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,9 +14,8 @@ public class CityServiceImpl implements CityService {
         this.cityDataExtractor = cityDataExtractor;
     }
 
-    @SneakyThrows
     @Override
-    public City getCity(String countryName, String cityName) {
-        return cityDataExtractor.getData(countryName, cityName);
+    public City getCity(String countryName, String cityName) throws UnirestException {
+        return cityDataExtractor.getCity(countryName, cityName);
     }
 }

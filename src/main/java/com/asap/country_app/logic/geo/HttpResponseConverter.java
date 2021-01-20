@@ -6,8 +6,7 @@ import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 @Component
-//TODO change name to HttpResponseConverter
-class ResponseConverterGeo {
+class HttpResponseConverter {
 
     City convertResponseToCity(HttpResponse<JsonNode> response) {
         City city = new City();
@@ -23,7 +22,7 @@ class ResponseConverterGeo {
         Country country = new Country();
         JSONObject data = getJSONObjectFromResponse(response);
         country.setWikiId(data.get("wikiDataId").toString());
-        country.setCurrency(data.get("currencyCodes").toString());
+        country.setCurrency(data.get("currencyCodes").toString().replace("[\"", "").replace("\"]", ""));
         country.setName(data.get("name").toString());
         country.setCode(data.get("code").toString());
         return country;

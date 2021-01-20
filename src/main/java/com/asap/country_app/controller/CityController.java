@@ -3,13 +3,12 @@ package com.asap.country_app.controller;
 import com.asap.country_app.service.CityService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.io.IOException;
 
 @RestController
 @Slf4j
@@ -26,14 +25,14 @@ public class CityController {
     @CrossOrigin
     @GetMapping("/city")
     public String getInfoForTheCity(@RequestParam(name = "country") String countryName,
-                                  @RequestParam(name = "city") String cityName) {
+                                    @RequestParam(name = "city") String cityName) {
         try {
             log.info("City info checked country={} city={}", countryName, cityName);
             return mapper.writeValueAsString(cityService.getCity(countryName, cityName));
-        } catch (JsonProcessingException e) {
+        } catch (JsonProcessingException | UnirestException e) {
             log.error("Not able to get city={} info {}", cityName, e.getMessage());
-            //TODO change to throwing some kind of exception
-            return null;
+            //TODO or change to JsonProcessingException
+            throw new IllegalArgumentException();
         }
     }
 

@@ -2,7 +2,7 @@ package com.asap.country_app.controller;
 
 import com.asap.country_app.logic.geo.Country;
 import com.asap.country_app.service.CountryService;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,7 +23,7 @@ public class CountryController {
         try {
             log.info("Country info checked country={}", countryName);
             return countryService.getCountry(countryName);
-        } catch (JsonProcessingException e) {
+        } catch (UnirestException e) {
             log.error("Not able to get country{} info {}", countryName, e.getMessage());
             //TODO change to throw exception
             return null;

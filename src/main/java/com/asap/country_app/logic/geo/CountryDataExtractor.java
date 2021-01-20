@@ -16,36 +16,36 @@ import org.springframework.stereotype.Component;
 public class CountryDataExtractor {
 
     private final HttpClient httpClient;
-    private final ResponseConverterGeo responseConverterGeo;
+    private final HttpResponseConverter httpResponseConverter;
     private final CurrencyExchangeDataExtractor currencyExchangeDataExtractor;
     private final WikiDataExtractor wikiDataExtractor;
 
     @Autowired
     public CountryDataExtractor(HttpClient httpClient,
-                                ResponseConverterGeo responseConverterGeo,
+                                HttpResponseConverter httpResponseConverter,
                                 CurrencyExchangeDataExtractor currencyExchangeDataExtractor,
                                 WikiDataExtractor wikiDataExtractor) {
         this.httpClient = httpClient;
-        this.responseConverterGeo = responseConverterGeo;
+        this.httpResponseConverter = httpResponseConverter;
         this.currencyExchangeDataExtractor = currencyExchangeDataExtractor;
         this.wikiDataExtractor = wikiDataExtractor;
     }
 
-    //TODO getCountry()
-    public Country getData(String countryName) throws UnirestException {
+
+    public Country getCountry(String countryName) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getCountryData(countryName);
-        Country country = responseConverterGeo.convertResponseToCountry(response);
+        Country country = httpResponseConverter.convertResponseToCountry(response);
         //TODO extract to separate method
-        country.setExchangeRate(Double.parseDouble(currencyExchangeDataExtractor.getData(country.getCurrency()
-                .replace("[\"", "").replace("\"]", ""), "PLN")));
-        country.setWikipediaPage(wikiDataExtractor.getData(countryName));
+        country.setExchangeRate(Double.parseDouble(currencyExchangeDataExtractor
+                .getExchangeRate(country.getCurrency(), "PLN"))); //TODO change to currency of user
+        country.setWikipediaUrl(wikiDataExtractor.getData(countryName));
         addFlagToCountry(country);
         return country;
     }
 
     private void addFlagToCountry(Country country) throws UnirestException {
         HttpResponse<JsonNode> flagResponse = httpClient.getFlag(country.getWikiId());
-        country.setFlag(responseConverterGeo.convertResponseToFlag(flagResponse));
+        country.setFlagUrl(httpResponseConverter.convertResponseToFlag(flagResponse));
     }
 
     private double getExchangeRateFromString(String stringRate) {

@@ -8,10 +8,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class CurrencyExchangeDataExtractor {
 
-    //TODO change name to getExchangeRate()
-    public String getData(String from, String to) throws UnirestException {
-        //TODO extract httpclient to field and add dependency injection
-        HttpResponse<String> response = new HttpClient().getCurrencyExchangeData(from, to);
+    private HttpClient httpClient;
+
+    public CurrencyExchangeDataExtractor(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
+
+    public String getExchangeRate(String from, String to) throws UnirestException {
+        HttpResponse<String> response = httpClient.getCurrencyExchangeData(from, to);
         return response.getBody();
     }
 }

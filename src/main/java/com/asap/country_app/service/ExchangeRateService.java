@@ -2,8 +2,7 @@ package com.asap.country_app.service;
 
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-//TODO ExchangeRateService
-public interface ExchangeRate {
+public interface ExchangeRateService {
     String getExchangeRate(String from, String to) throws UnirestException;
 
 }

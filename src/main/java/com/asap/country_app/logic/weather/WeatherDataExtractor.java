@@ -12,17 +12,16 @@ import org.springframework.stereotype.Component;
 public class WeatherDataExtractor {
 
     private final HttpClient httpClient;
-    private final ResponseConverterWeather responseConverterWeather;
+    private final HttpResponseToWeatherConverter httpResponseToWeatherConverter;
 
     @Autowired
-    public WeatherDataExtractor(HttpClient httpClient, ResponseConverterWeather responseConverterWeather) {
+    public WeatherDataExtractor(HttpClient httpClient, HttpResponseToWeatherConverter httpResponseToWeatherConverter) {
         this.httpClient = httpClient;
-        this.responseConverterWeather = responseConverterWeather;
+        this.httpResponseToWeatherConverter = httpResponseToWeatherConverter;
     }
 
-    //TODO getWeather
-    public Weather getData(City city) throws UnirestException {
+    public Weather getWeather(City city) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getWeatherData(city);
-        return responseConverterWeather.convertResponseToWeather(response);
+        return httpResponseToWeatherConverter.convertResponseToWeather(response);
     }
 }

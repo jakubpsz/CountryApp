@@ -13,30 +13,29 @@ import org.springframework.stereotype.Component;
 public class CityDataExtractor {
 
     private final HttpClient httpClient;
-    private final ResponseConverterGeo responseConverterGeo;
+    private final HttpResponseConverter httpResponseConverter;
     private final WeatherDataExtractor weatherDataExtractor;
     private final WikiDataExtractor wikiDataExtractor;
     private final CountryDataExtractor countryDataExtractor;
 
     @Autowired
-    public CityDataExtractor(HttpClient httpClient, ResponseConverterGeo responseConverterGeo,
+    public CityDataExtractor(HttpClient httpClient, HttpResponseConverter httpResponseConverter,
                              WeatherDataExtractor weatherDataExtractor, WikiDataExtractor wikiDataExtractor,
                              CountryDataExtractor countryDataExtractor) {
         this.httpClient = httpClient;
-        this.responseConverterGeo = responseConverterGeo;
+        this.httpResponseConverter = httpResponseConverter;
         this.weatherDataExtractor = weatherDataExtractor;
         this.wikiDataExtractor = wikiDataExtractor;
         this.countryDataExtractor = countryDataExtractor;
     }
 
-    //TODO getCity()
-    public City getData(String countryName, String cityName) throws UnirestException {
-        Country country = countryDataExtractor.getData(countryName);
+    public City getCity(String countryName, String cityName) throws UnirestException {
+        Country country = countryDataExtractor.getCountry(countryName);
 
         HttpResponse<JsonNode> response = httpClient.getCityData(country, cityName);
-        City city = responseConverterGeo.convertResponseToCity(response);
+        City city = httpResponseConverter.convertResponseToCity(response);
         city.setCountry(country);
-        city.setWeather(weatherDataExtractor.getData(city));
+        city.setWeather(weatherDataExtractor.getWeather(city));
         city.setWikipediaPage(wikiDataExtractor.getData(cityName));
         return city;
     }

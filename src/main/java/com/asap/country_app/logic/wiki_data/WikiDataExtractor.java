@@ -10,9 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class WikiDataExtractor {
 
+    private HttpClient httpClient;
+
+    public WikiDataExtractor(HttpClient httpClient) {
+        this.httpClient = httpClient;
+    }
+
     public String getData(String cityName) throws UnirestException {
-        //TODO extract httpclient as a field
-        HttpResponse<JsonNode> response = new HttpClient().getWikiData(cityName);
+        HttpResponse<JsonNode> response = httpClient.getWikiData(cityName);
         JSONObject jsonObject = response.getBody().getObject().getJSONObject("query").getJSONObject("pages");
         String jsonKey = jsonObject.keySet().stream().findFirst().orElseThrow();
         return jsonObject.getJSONObject(jsonKey).get("fullurl").toString();
