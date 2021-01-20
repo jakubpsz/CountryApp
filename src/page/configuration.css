@@ -3,13 +3,32 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
-    margin: 0 auto;
+
+    margin: auto auto;
+
 }
 
 .page {
     position: center;
     width: 1200px;
     margin: 0 auto;
+}
+
+#page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+#content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;            /* Footer height */
+    background-color: olive;
 }
 
 .app {
@@ -62,6 +81,7 @@ header {
 
 }
 
+
 footer {
     background-color: olive;
     height: 100px;
@@ -84,6 +104,7 @@ input.hidden {
     height: 100px;
     border: 2px solid #03b1ce;
 }
+
 
 .tital {
     font-size: 16px;
@@ -123,4 +144,27 @@ input.hidden {
     float: right;
 }
 
+
+
+#parent {
+    list-style: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+#parent > li {
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    float: right;
+
+}
+
+.container{
+    margin-top: 25px;
+}
 

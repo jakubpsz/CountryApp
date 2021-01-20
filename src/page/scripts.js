@@ -1,3 +1,4 @@
+
 let form = document.forms['location']
 let country = form['country'];
 let city = form['city'];
