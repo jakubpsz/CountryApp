@@ -15,65 +15,77 @@
 
 <body>
 
-<header>
-    <div class="page">
-        <div class="app">
-            <!--        <img class="header__logo" src="pictures/logo.jpg"/>-->
-            <p class="header__CountryApp">
+<div id="page-container">
+    <div id="content-wrap">
+        <header>
+            <div class="page">
+                <div class="app">
+                    <!--        <img class="header__logo" src="pictures/logo.jpg"/>-->
+                    <p class="header__CountryApp">
             <span class="logo2">
                 犬
             </span>
-                <span>
+                        <span>
                 Travel-Up
             </span>
 
-            </p>
-        </div>
-        <nav class=" navbar-light nav">
-            <form class="container-fluid justify-content-start">
-                <button class="btn btn-outline-success me-2 button" type="button">My place</button>
-                <button class="btn btn-sm btn-outline-secondary button" type="button"> Country</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button"> City</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button"> Login</button>
-            </form>
-        </nav>
+                    </p>
+                </div>
+                <nav class=" navbar-light nav">
+                    <form class="container-fluid justify-content-start">
+                        <button class="btn btn-outline-success me-2 button" type="button">My place</button>
+                        <button class="btn btn-sm btn-outline-secondary button" type="button"> Country</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button"> City</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button"> Login</button>
+                    </form>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <section class="page">
+
+                <ul id="parent">
+                    <li>
+
+
+
+                        <form name="location" class="find">
+                            <legend>Find your place</legend>
+                            <div class="mb-3">
+                                <div class="col">
+                                    <label class="form-label">Country</label>
+                                    <input type="text" class="form-control" placeholder="Poland" aria-label="Country" name="country">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" placeholder="Krakow" aria-label="City" name="city">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Find city</button>
+                        </form>
+
+
+                    </li>
+                    <li>
+                        <div class="container">
+                            <table class="table " >
+                                <tbody class="tbody" >
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
     </div>
-</header>
-
-<section class="page">
-    <form name="location" class="find">
-        <legend>Find your place</legend>
-        <div class="mb-3">
-            <div class="col">
-                <label class="form-label">Country</label>
-                <input type="text" class="form-control" placeholder="Poland" aria-label="Country" name="country">
-            </div>
-            <div class="col">
-                <label class="form-label">City</label>
-                <input type="text" class="form-control" placeholder="Krakow" aria-label="City" name="city">
-            </div>
+    <footer id="footer">
+        <div class="page">
+            Created by ASAP-Group
         </div>
-        <button type="submit" class="btn btn-primary">Find city</button>
-    </form>
-</section>
-
-
-<div class="container">
-    <table class="table " >
-        <tbody class="tbody" >
-
-        </tbody>
-    </table>
+    </footer>
 </div>
 
-
-        <div></div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<footer>
-    <div class="page">
-        Created by ASAP-Group
-    </div>
-</footer>
 
 
 <script type="text/javascript" src="scripts.js"></script>
