@@ -1,4 +1,4 @@
-package com.asap.country_app.user;
+package com.asap.country_app.logic.user;
 
 import lombok.Getter;
 import lombok.Setter;

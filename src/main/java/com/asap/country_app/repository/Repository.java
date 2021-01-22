@@ -1,6 +1,6 @@
 package com.asap.country_app.repository;
 
-import com.asap.country_app.user.User;
+import com.asap.country_app.logic.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 

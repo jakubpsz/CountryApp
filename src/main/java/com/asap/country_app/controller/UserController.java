@@ -1,8 +1,8 @@
 package com.asap.country_app.controller;
 
 import com.asap.country_app.service.UserService;
-import com.asap.country_app.user.User;
-import com.asap.country_app.user.UserDto;
+import com.asap.country_app.logic.user.User;
+import com.asap.country_app.logic.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;

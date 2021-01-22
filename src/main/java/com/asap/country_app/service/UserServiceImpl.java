@@ -1,9 +1,9 @@
 package com.asap.country_app.service;
 
 import com.asap.country_app.repository.Repository;
-import com.asap.country_app.user.User;
-import com.asap.country_app.user.UserConverter;
-import com.asap.country_app.user.UserDto;
+import com.asap.country_app.logic.user.User;
+import com.asap.country_app.logic.user.UserConverter;
+import com.asap.country_app.logic.user.UserDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

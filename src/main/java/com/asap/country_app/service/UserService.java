@@ -1,7 +1,7 @@
 package com.asap.country_app.service;
 
-import com.asap.country_app.user.User;
-import com.asap.country_app.user.UserDto;
+import com.asap.country_app.logic.user.User;
+import com.asap.country_app.logic.user.UserDto;
 
 import java.util.List;
 
