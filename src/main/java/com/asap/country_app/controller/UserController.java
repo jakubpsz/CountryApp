@@ -1,13 +1,11 @@
 package com.asap.country_app.controller;
 
+import com.asap.country_app.logic.user.Location;
 import com.asap.country_app.service.UserService;
 import com.asap.country_app.logic.user.User;
 import com.asap.country_app.logic.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +34,14 @@ public class UserController {
     public List<User> getUsers() {
         log.info("Requested all users");
         return userService.getUsers();
+    }
+
+    @PutMapping("/location/{email}")
+    public String addLocation(@RequestBody Location location, @PathVariable String email) {
+        if (userService.addLocation(email, location)) {
+            return "Success";
+        } else {
+            return "Failed";
+        }
     }
 }

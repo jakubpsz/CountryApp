@@ -17,7 +17,7 @@ class HttpResponseToWeatherConverter {
         JSONObject windData = response.getBody().getObject().getJSONObject("wind");
         weather.setDescription(weatherData.get(("description")).toString());
         weather.setTemperature((int) Double.parseDouble(mainData.get("temp").toString()) - KELVIN_DEGREE_OFFSET);
-        weather.setFeelsLike((int) Double.parseDouble(mainData.get("feels_like").toString()) - KELVIN_DEGREE_OFFSET);
+        weather.setSensedTemp((int) Double.parseDouble(mainData.get("feels_like").toString()) - KELVIN_DEGREE_OFFSET);
         weather.setPressure((int) Double.parseDouble(mainData.get("pressure").toString()));
         weather.setWind(Double.parseDouble(windData.get("speed").toString()));
         return weather;
