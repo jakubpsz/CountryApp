@@ -1,9 +1,12 @@
 package com.asap.country_app.service;
 
 import com.asap.country_app.repository.Repository;
+import com.asap.country_app.user.User;
 import com.asap.country_app.user.UserConverter;
-import com.asap.country_app.user.UserDTO;
+import com.asap.country_app.user.UserDto;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -17,7 +20,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean createUser(UserDTO userDTO) {
+    public boolean createUser(UserDto userDTO) {
         return repository.addUserToRepository(userConverter.convertUserDTOToUser(userDTO));
+    }
+
+    @Override
+    public List<User> getUsers() {
+        return repository.getAllUsers();
     }
 }

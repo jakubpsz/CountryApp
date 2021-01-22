@@ -4,8 +4,11 @@ import com.asap.country_app.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Component
 @Slf4j
@@ -21,5 +24,9 @@ public class Repository {
             repo.put(user.getMail(), user);
             return true;
         }
+    }
+
+    public List<User> getAllUsers(){
+        return new ArrayList<>(repo.values());
     }
 }
