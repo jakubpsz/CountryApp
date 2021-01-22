@@ -23,24 +23,18 @@ public class UserController {
 
 
     @PutMapping("/register")
-    public String addUser(@RequestBody UserDto userDto){
+    public String addUser(@RequestBody UserDto userDto) {
         log.info("Register user email={} password={}", userDto.getEmail(), userDto.getPassword());
-        if(userService.createUser(userDto)){
+        if (userService.createUser(userDto)) {
             return "Success";
-        }else {
+        } else {
             return "Failed";
         }
     }
 
     @GetMapping("/users")
-    public List<User> getUsers(){
-        try {
-            log.info("Requested all users");
-            return userService.getUsers();
-        }catch (NullPointerException e){
-            log.error("No entries in database");
-            throw new NullPointerException();
-        }
+    public List<User> getUsers() {
+        log.info("Requested all users");
+        return userService.getUsers();
     }
-
 }
