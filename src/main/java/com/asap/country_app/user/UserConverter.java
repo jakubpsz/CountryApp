@@ -7,7 +7,7 @@ public class UserConverter {
 
     public UserDto convertUserToUserDTO(User user){
         UserDto userDTO = new UserDto();
-        userDTO.setEmail(user.getMail());
+        userDTO.setEmail(user.getEmail());
         userDTO.setPassword(user.getPassword());
         return userDTO;
     }

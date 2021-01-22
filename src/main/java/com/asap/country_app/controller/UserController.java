@@ -24,8 +24,12 @@ public class UserController {
 
     @PutMapping("/register")
     public String addUser(@RequestBody UserDto userDto){
-        userService.createUser(userDto);
-        return "Success";
+        log.info("Register user email={} password={}", userDto.getEmail(), userDto.getPassword());
+        if(userService.createUser(userDto)){
+            return "Success";
+        }else {
+            return "Failed";
+        }
     }
 
     @GetMapping("/users")
