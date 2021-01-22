@@ -11,8 +11,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 
 @Component
-//TODO check if this line is needed
-@ComponentScan(basePackages = "com.asap.country_app")
 public class CountryDataExtractor {
 
     private final HttpClient httpClient;
@@ -35,9 +33,7 @@ public class CountryDataExtractor {
     public Country getCountry(String countryName) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getCountryData(countryName);
         Country country = httpResponseConverter.convertResponseToCountry(response);
-        //TODO extract to separate method
-        country.setExchangeRate(Double.parseDouble(currencyExchangeDataExtractor
-                .getExchangeRate(country.getCurrency(), "PLN"))); //TODO change to currency of user
+        country.setExchangeRate(getExchangeRateFromString(country.getCurrency()));
         country.setWikipediaUrl(wikiDataExtractor.getData(countryName));
         addFlagToCountry(country);
         return country;
@@ -48,7 +44,8 @@ public class CountryDataExtractor {
         country.setFlagUrl(httpResponseConverter.convertResponseToFlag(flagResponse));
     }
 
-    private double getExchangeRateFromString(String stringRate) {
-        return 0;
+    private double getExchangeRateFromString(String stringRate) throws UnirestException {
+        //TODO change to currency of user
+        return Double.parseDouble(currencyExchangeDataExtractor.getExchangeRate(stringRate, "PLN"));
     }
 }

@@ -23,8 +23,7 @@ public class ExchangeRateController {
             return exchangeRateService.getExchangeRate(from, to);
         } catch (UnirestException e) {
             log.error("Not able to get exchange rate from {} to {} error {}", from, to, e.getMessage());
-            //TODO change to exception throwing
-            return null;
+            throw new IllegalArgumentException();
         }
     }
 }
