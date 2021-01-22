@@ -1,4 +1,4 @@
-package com.asap.country_app.user;
+package com.asap.country_app.logic.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,14 +9,14 @@ import java.util.ArrayList;
 @Getter
 public class User {
 
-    private String mail;
+    private String email;
     private String password;
 
     private UserInfo userInfo;
     private ArrayList<Location> places;
 
-    public User(String mail, String password) {
-        this.mail = mail;
+    public User(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 }
