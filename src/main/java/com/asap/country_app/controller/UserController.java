@@ -3,7 +3,6 @@ package com.asap.country_app.controller;
 import com.asap.country_app.logic.user.Location;
 import com.asap.country_app.service.UserService;
 import com.asap.country_app.logic.user.User;
-import com.asap.country_app.logic.user.UserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +20,9 @@ public class UserController {
 
 
     @PutMapping("/register")
-    public String addUser(@RequestBody UserDto userDto) {
-        log.info("Register user email={} password={}", userDto.getEmail(), userDto.getPassword());
-        if (userService.createUser(userDto)) {
+    public String addUser(@RequestBody User user) {
+        log.info("Register user email={} password={}", user.getEmail(), user.getPassword());
+        if (userService.createUser(user)) {
             return "Success";
         } else {
             return "Failed";
