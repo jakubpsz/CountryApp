@@ -1,5 +1,7 @@
 package com.asap.country_app.service;
 
+import com.asap.country_app.user.UserDTO;
+
 public interface UserService {
-    boolean createUser (String email, String password);
+    boolean createUser (UserDTO userDTO);
 }
