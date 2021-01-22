@@ -13,10 +13,10 @@ import java.util.Map;
 @Slf4j
 public class Repository {
 
-    private final Map<String, User> repo = new HashMap<>();
+    private Map<String, User> repo = new HashMap<>();
 
     public boolean addUserToRepository(User user) {
-        if (repo.containsKey(user.getEmail())){
+        if (repo.containsKey(user.getEmail())) {
             log.error("This mail is in base");
             return false;
         } else {
@@ -26,8 +26,12 @@ public class Repository {
         }
     }
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         log.info("Getting all users");
         return new ArrayList<>(repo.values());
+    }
+
+    public User getByEmail(String email) {
+        return repo.get(email);
     }
 }
