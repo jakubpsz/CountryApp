@@ -54,10 +54,6 @@ public class UserServiceImpl implements UserService{
 
     public boolean removeUser(String email){
         User user = repository.removeUser(email);
-        if(user == null){
-            return false;
-        }else {
-            return true;
-        }
+        return user != null;
     }
 }
