@@ -11,5 +11,6 @@ public interface UserService {
     List<User> getUsers();
     boolean addLocation(String email, Location location);
     boolean addUserInfo(String email, UserInfo userInfo);
+    public boolean removeUser(String email);
 
 }

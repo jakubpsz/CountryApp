@@ -53,4 +53,13 @@ public class UserController {
             return "Failed";
         }
     }
+
+    @DeleteMapping("/delete/{email}")
+    public String deleteUser(@PathVariable String email) {
+        if (userService.removeUser(email)) {
+            return "Success";
+        } else {
+            return "Failed";
+        }
+    }
 }

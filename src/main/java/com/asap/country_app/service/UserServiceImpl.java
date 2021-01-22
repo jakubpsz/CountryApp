@@ -41,7 +41,6 @@ public class UserServiceImpl implements UserService{
             return true;
         }
     }
-
     @Override
     public boolean addUserInfo(String email, UserInfo userInfo) {
         User user = repository.getByEmail(email);
@@ -49,6 +48,15 @@ public class UserServiceImpl implements UserService{
             return false;
         }else {
             user.setUserInfo(userInfo);
+            return true;
+        }
+    }
+
+    public boolean removeUser(String email){
+        User user = repository.removeUser(email);
+        if(user == null){
+            return false;
+        }else {
             return true;
         }
     }
