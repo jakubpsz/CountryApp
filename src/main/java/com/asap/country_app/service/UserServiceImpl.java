@@ -1,6 +1,7 @@
 package com.asap.country_app.service;
 
 import com.asap.country_app.logic.user.Location;
+import com.asap.country_app.logic.user.UserInfo;
 import com.asap.country_app.repository.Repository;
 import com.asap.country_app.logic.user.User;
 import org.springframework.stereotype.Service;
@@ -37,6 +38,17 @@ public class UserServiceImpl implements UserService{
                 user.setPlaces(new ArrayList<>());
             }
             user.getPlaces().add(location);
+            return true;
+        }
+    }
+
+    @Override
+    public boolean addUserInfo(String email, UserInfo userInfo) {
+        User user = repository.getByEmail(email);
+        if(user == null){
+            return false;
+        }else {
+            user.setUserInfo(userInfo);
             return true;
         }
     }
