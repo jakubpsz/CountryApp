@@ -25,8 +25,7 @@ public class CountryController {
             return countryService.getCountry(countryName);
         } catch (UnirestException e) {
             log.error("Not able to get country{} info {}", countryName, e.getMessage());
-            //TODO change to throw exception
-            return null;
+            throw new IllegalArgumentException();
         }
     }
 }

@@ -34,7 +34,13 @@ public class UserController {
 
     @GetMapping("/users")
     public List<User> getUsers(){
-        return userService.getUsers();
+        try {
+            log.info("Requested all users");
+            return userService.getUsers();
+        }catch (NullPointerException e){
+            log.error("No entries in database");
+            throw new NullPointerException();
+        }
     }
 
 }
