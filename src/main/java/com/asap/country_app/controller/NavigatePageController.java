@@ -13,6 +13,6 @@ public class NavigatePageController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "login/login";
     }
 }

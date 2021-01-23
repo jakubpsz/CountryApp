@@ -11,12 +11,12 @@ function buttonFind(event) {
     fetch("http://localhost:8080/city?country=" + country.value.toLowerCase() + '&city=' + city.value.toLowerCase())
         .then(response => response.json())
         .then(cityInfo => {
-            console.log('Created table');
 
-            tableBody.innerHTML = `<div th:insert="template :: city_resoult"ZZZ/>`;
+
+            tableBody.innerHTML = `<div th:insert="city_temp :: city_result"/>`;
         })
 };
-
+console.log('Created table');
 form.addEventListener('submit', buttonFind)
 
 
