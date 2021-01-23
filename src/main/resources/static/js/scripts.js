@@ -12,11 +12,12 @@ function buttonFind(event) {
         .then(response => response.json())
         .then(cityInfo => {
 
-
             tableBody.innerHTML = `<div th:insert="city_temp :: city_result"/>`;
+            console.log('Created table');
         })
+
 };
-console.log('Created table');
+
 form.addEventListener('submit', buttonFind)
 
 
