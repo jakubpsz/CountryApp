@@ -25,14 +25,14 @@ public class CityController {
     @CrossOrigin
     @GetMapping("/city")
     public String getInfoForTheCity(@RequestParam(name = "country") String countryName,
-                                    @RequestParam(name = "city") String cityName) {
+                                    @RequestParam(name = "city") String cityName) throws JsonProcessingException, UnirestException {
         try {
             log.info("City info checked country={} city={}", countryName, cityName);
             return mapper.writeValueAsString(cityService.getCity(countryName, cityName));
         } catch (JsonProcessingException | UnirestException e) {
             log.error("Not able to get city={} info {}", cityName, e.getMessage());
             //TODO or change to JsonProcessingException
-            throw new IllegalArgumentException();
+            throw e;
         }
     }
 

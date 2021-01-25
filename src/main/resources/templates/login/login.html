@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <div th:insert="head_template :: main_head"/>
+</head>
+<body>
+
+<div th:insert="constant_view/const_temp :: header"/>
+
+<div id="page-container">
+    <div id="content-wrap">
+        <main>
+            <section class="page">
+                <ul id="parent">
+                    <li>
+                        <form name="location" class="find">
+                            <legend>Register</legend>
+                            <div class="mb-3">
+                                <div class="col">
+                                    <label class="form-label">Address e-mail</label>
+                                    <input type="text" class="form-control" placeholder="something@gmail.com" e-mail="Country" name="e-mail">
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Password</label>
+                                    <input type="text" class="form-control" placeholder="js63HseM54h" aria-label="password" name="password">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+
+                    </li>
+                    <li>
+                        <div class="container">
+                            <table class="table " >
+                                <tbody class="tbody" >
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </main>
+    </div>
+</div>
+
+
+
+
+<div th:insert="constant_view/const_temp :: footer"/>
+</body>
+</html>

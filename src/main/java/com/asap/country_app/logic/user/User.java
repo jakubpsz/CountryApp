@@ -9,6 +9,7 @@ import java.util.ArrayList;
 @Getter
 public class User {
 
+//    @Email
     private String email;
     private String password;
 
