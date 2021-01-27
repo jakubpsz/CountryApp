@@ -7,38 +7,42 @@
 <body>
 
 <div id="page-container">
-    <header th:fragment="header" id="content-wrap">
-        <div class="page">
-            <div class="app">
-                <!--        <img class="header__logo" src="pictures/logo.jpg"/>-->
-                <p class="header__CountryApp">
+    <div id="content-wrap">
+        <header th:fragment="header">
+            <div class="page">
+                <div class="app">
+                    <!--        <img class="header__logo" src="pictures/logo.jpg"/>-->
+                    <p class="header__CountryApp">
 
-            <span class="logo2" >
+            <span class="logo2">
                 犬
             </span>
-                    <span>
+                        <span>
                 Travel-Up
             </span>
 
-                </p>
+                    </p>
+                </div>
+                <nav class=" navbar-light nav">
+                    <form class="container-fluid justify-content-start">
+                        <button class="btn btn-outline-success me-2 button" type="button">My place</button>
+                        <button class="btn btn-sm btn-outline-secondary button" type="button"> Country</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button"> City</button>
+                        <button class="btn btn-sm btn-outline-secondary" type="button"><a href="/login">Login</a>
+                        </button>
+                    </form>
+                </nav>
             </div>
-            <nav class=" navbar-light nav">
-                <form class="container-fluid justify-content-start">
-                    <button class="btn btn-outline-success me-2 button" type="button">My place</button>
-                    <button class="btn btn-sm btn-outline-secondary button" type="button"> Country</button>
-                    <button class="btn btn-sm btn-outline-secondary" type="button"> City</button>
-                    <button class="btn btn-sm btn-outline-secondary" type="button" ><a href="/login">Login</a> </button>
-                </form>
-            </nav>
-        </div>
-    </header>
+        </header>
 
 
-    <footer id="footer" th:fragment="footer">
-        <div class="page">
-            Created by ASAP-Group
-        </div>
-    </footer>
+        <footer id="footer" th:fragment="footer">
+
+            <div class="page">
+                Created by ASAP-Group
+            </div>
+        </footer>
+    </div>
 </div>
 
 </body>
