@@ -34,4 +34,8 @@ public class Repository {
     public User getByEmail(String email) {
         return repo.get(email);
     }
+
+    public User removeUser(String email){
+        return repo.remove(email);
+    }
 }
