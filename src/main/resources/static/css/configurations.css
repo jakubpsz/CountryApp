@@ -120,6 +120,7 @@ input.hidden {
     width: 100%;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-top: 50px;
 }
 
 #parent > li {
