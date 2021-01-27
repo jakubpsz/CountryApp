@@ -1,20 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Main_Page</title>
     <div th:insert="head_template :: main_head"/>
 </head>
 <body>
+<div id="page-container">
+    <div id="content-wrap">
 
 <div th:insert="constant_view/const_temp :: header"/>
 
-<div id="page-container">
-    <div id="content-wrap">
+
         <main>
             <section class="page">
                 <ul id="parent">
                     <li>
+                        <div class="container2">
                         <form name="location" class="find">
                             <legend>Find your place</legend>
                             <div class="mb-3">
@@ -29,6 +31,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary">Find city</button>
                         </form>
+                        </div>
 
                     </li>
                     <li>
@@ -44,9 +47,10 @@
             </section>
         </main>
     </div>
-</div>
+
 
 <div th:insert="constant_view/const_temp :: footer"/>
+</div>
 
 <script type="text/javascript" src="js/scripts.js"></script>
 </body>

@@ -7,7 +7,6 @@ body {
     margin: auto auto;
 
 }
-
 .page {
     position: center;
     width: 1200px;
@@ -81,7 +80,6 @@ header {
 
 }
 
-
 footer {
     background-color: olive;
     height: 100px;
@@ -116,25 +114,13 @@ input.hidden {
     margin: 5px 0 5px 0
 }
 
-/*.city_field {*/
-/*    float: left;*/
-/*    display: inline-block;*/
-/*}*/
-/*.container {*/
-/*    display: inline-block;*/
-/*    float:left;*/
-/*}*/
-.tbody {
-    margin-bottom: 5000px;
-}
 
 #parent {
     list-style: none;
     width: 100%;
-    margin-top: 60px;
-    margin-right: 50px;
     overflow-x: auto;
     overflow-y: hidden;
+    margin-top: 50px;
 }
 
 #parent > li {
@@ -142,29 +128,5 @@ input.hidden {
     width: 50%;
     height: 100%;
     float: right;
-}
-
-
-
-#parent {
-    list-style: none;
-    width: 100%;
-    margin: 0;
-    padding: 0;
-    white-space: nowrap;
-    overflow-x: auto;
-    overflow-y: hidden;
-}
-
-#parent > li {
-    display: inline-block;
-    width: 50%;
-    height: 100%;
-    float: right;
-
-}
-
-.container{
-    margin-top: 25px;
 }
 

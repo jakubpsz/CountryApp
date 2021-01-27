@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <link rel="stylesheet" href="/css_files/configuration.css"/>
+
 </head>
 <body>
 <div class="container" th:fragment="city_result">
@@ -14,7 +14,7 @@
                     <div class="box box-info">
                         <div class="box-body">
                             <div class="col-sm-6">
-                                <div align="center"><img alt="User Pic" src="` + cityInfo.country.flagUrl + `"
+                                <div align="center"><img alt="User Pic" src=${cityInfo.country.flagUrl}
                                                          id="profile-image1" style="border-radius: 10px;">
 
                                 </div>
