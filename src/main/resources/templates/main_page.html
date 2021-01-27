@@ -6,11 +6,12 @@
     <div th:insert="head_template :: main_head"/>
 </head>
 <body>
+<div id="page-container">
+    <div id="content-wrap">
 
 <div th:insert="constant_view/const_temp :: header"/>
 
-<div id="page-container">
-    <div id="content-wrap">
+
         <main>
             <section class="page">
                 <ul id="parent">
@@ -44,9 +45,10 @@
             </section>
         </main>
     </div>
-</div>
+
 
 <div th:insert="constant_view/const_temp :: footer"/>
+</div>
 
 <script type="text/javascript" src="js/scripts.js"></script>
 </body>

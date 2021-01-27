@@ -13,6 +13,7 @@ function buttonFind(event) {
         .then(cityInfo => {
 
             tableBody.innerHTML = `
+
     <div class="row ">
         <div class="col-md-7 ">
             <div class="panel panel-default">
@@ -122,7 +123,8 @@ function buttonFind(event) {
             </div>
         </div>
     </div>
-</div>`;
+</div>
+`;
             console.log('Created table');
         })
 
