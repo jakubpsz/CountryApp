@@ -19,14 +19,14 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    @CrossOrigin
     @PutMapping("/register")
     public String addUser(@RequestBody User user) {
         log.info("Register user email={} password={}", user.getEmail(), user.getPassword());
         if (userService.createUser(user)) {
-            return "Success";
+            return "Success register for " + user.getEmail();
         } else {
-            return "Failed";
+            return "Failed register for " + user.getEmail();
         }
     }
 
