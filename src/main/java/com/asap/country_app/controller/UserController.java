@@ -20,7 +20,7 @@ public class UserController {
     }
 
     @CrossOrigin
-    @PutMapping("/register")
+    @PostMapping("/register")
     public String addUser(@RequestBody User user) {
         log.info("Register user email={} password={}", user.getEmail(), user.getPassword());
         if (userService.createUser(user)) {

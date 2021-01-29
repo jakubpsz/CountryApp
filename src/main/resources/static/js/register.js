@@ -11,8 +11,9 @@ function buttonFind(event) {
         password: password.value
     }
 
+    
     fetch("register", {
-        method: "put",
+        method: "post",
         headers: {
             "Content-Type": "application/json"
         },
