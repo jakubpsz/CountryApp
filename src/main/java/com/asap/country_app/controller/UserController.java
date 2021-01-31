@@ -30,6 +30,13 @@ public class UserController {
         }
     }
 
+    //TODO create login for users, cookie?
+    @PostMapping("/login")
+    public List<User> login() {
+        log.info("Login success");
+        return userService.getUsers();
+    }
+
     @GetMapping("/users")
     public List<User> getUsers() {
         log.info("Requested all users");

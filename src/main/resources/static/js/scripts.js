@@ -12,7 +12,8 @@ function buttonFind(event) {
         .then(response => response.json())
         .then(cityInfo => {
 
-            tableBody.innerHTML = `
+            if (cityInfo.status != 500) {
+                tableBody.innerHTML = `
 
     <div class="row ">
         <div class="col-md-7 ">
@@ -125,8 +126,17 @@ function buttonFind(event) {
     </div>
 </div>
 `;
-            console.log('Created table');
+                console.log('Created table');
+            } else {
+                console.log('error');
+                tableBody.innerHTML = `
+                <div style="color:red; float:right">
+                There isn't that location, try again.
+                </div>
+                `
+            }
         })
+
 
 };
 
