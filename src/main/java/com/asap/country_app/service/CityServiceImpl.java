@@ -1,7 +1,7 @@
 package com.asap.country_app.service;
 
-import com.asap.country_app.logic.geo.City;
-import com.asap.country_app.logic.geo.CityDataExtractor;
+import com.asap.country_app.api_logic.geo.City;
+import com.asap.country_app.api_logic.geo.CityDataExtractor;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Service;
 

@@ -1,9 +1,9 @@
 package com.asap.country_app.controller;
 
-import com.asap.country_app.logic.user.Location;
-import com.asap.country_app.logic.user.UserInfo;
+import com.asap.country_app.database.user.Location;
+import com.asap.country_app.database.user.UserInfo;
 import com.asap.country_app.service.UserService;
-import com.asap.country_app.logic.user.User;
+import com.asap.country_app.database.user.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,9 +1,9 @@
 package com.asap.country_app.service;
 
-import com.asap.country_app.logic.user.Location;
-import com.asap.country_app.logic.user.UserInfo;
-import com.asap.country_app.repository.Repository;
-import com.asap.country_app.logic.user.User;
+import com.asap.country_app.database.user.Location;
+import com.asap.country_app.database.user.UserInfo;
+import com.asap.country_app.database.repository.Repository;
+import com.asap.country_app.database.user.User;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -31,15 +31,17 @@ public class UserServiceImpl implements UserService{
     @Override
     public boolean addLocation(String email, Location location) {
         User user = repository.getByEmail(email);
-        if(user == null){
+        if(user == null) {
             return false;
-        }else {
-            if (user.getPlaces() == null) {
-                user.setPlaces(new ArrayList<>());
-            }
-            user.getPlaces().add(location);
-            return true;
         }
+//        }else {
+//            if (user.getPlaces() == null) {
+//                user.setPlaces(new ArrayList<>());
+//            }
+//            user.getPlaces().add(location);
+//            return true;
+//        }
+        return false;
     }
     @Override
     public boolean addUserInfo(String email, UserInfo userInfo) {

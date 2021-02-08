@@ -1,10 +1,8 @@
-package com.asap.country_app.logic.user;
+package com.asap.country_app.database.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.CascadeType;
@@ -33,8 +31,10 @@ public class UserInfo {
     private String codeOfCountry;
     private String currency;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+
+   // @OneToOne(cascade = CascadeType.ALL)
+   // @JoinColumn(name = "user_id", referencedColumnName = "id")
+   @OneToOne(mappedBy = "userInfo")
     private User user;
 
 

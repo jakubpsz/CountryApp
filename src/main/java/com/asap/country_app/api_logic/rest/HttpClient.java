@@ -1,7 +1,7 @@
-package com.asap.country_app.logic.rest;
+package com.asap.country_app.api_logic.rest;
 
-import com.asap.country_app.logic.geo.City;
-import com.asap.country_app.logic.geo.Country;
+import com.asap.country_app.api_logic.geo.City;
+import com.asap.country_app.api_logic.geo.Country;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;

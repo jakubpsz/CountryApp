@@ -1,6 +1,6 @@
-package com.asap.country_app.logic.wiki_data;
+package com.asap.country_app.api_logic.wiki_data;
 
-import com.asap.country_app.logic.rest.HttpClient;
+import com.asap.country_app.api_logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;

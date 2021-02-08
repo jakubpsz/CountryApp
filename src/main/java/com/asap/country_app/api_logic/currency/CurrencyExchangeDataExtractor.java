@@ -1,6 +1,6 @@
-package com.asap.country_app.logic.currency;
+package com.asap.country_app.api_logic.currency;
 
-import com.asap.country_app.logic.rest.HttpClient;
+import com.asap.country_app.api_logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Component;

@@ -1,6 +1,6 @@
-package com.asap.country_app.logic.geo;
+package com.asap.country_app.api_logic.geo;
 
-import com.asap.country_app.logic.weather.Weather;
+import com.asap.country_app.api_logic.weather.Weather;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,6 +1,6 @@
 package com.asap.country_app.controller;
 
-import com.asap.country_app.logic.geo.Country;
+import com.asap.country_app.api_logic.geo.Country;
 import com.asap.country_app.service.CountryService;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;

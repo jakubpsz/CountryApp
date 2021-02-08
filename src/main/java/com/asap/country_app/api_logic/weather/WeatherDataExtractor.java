@@ -1,7 +1,7 @@
-package com.asap.country_app.logic.weather;
+package com.asap.country_app.api_logic.weather;
 
-import com.asap.country_app.logic.geo.City;
-import com.asap.country_app.logic.rest.HttpClient;
+import com.asap.country_app.api_logic.geo.City;
+import com.asap.country_app.api_logic.rest.HttpClient;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.exceptions.UnirestException;

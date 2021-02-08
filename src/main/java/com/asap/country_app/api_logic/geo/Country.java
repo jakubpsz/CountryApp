@@ -1,4 +1,4 @@
-package com.asap.country_app.logic.geo;
+package com.asap.country_app.api_logic.geo;
 
 import lombok.Getter;
 import lombok.Setter;
