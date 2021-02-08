@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,8 +30,8 @@ public class CityController {
         try {
             log.info("City info checked country={} city={}", countryName, cityName);
             return mapper.writeValueAsString(cityService.getCity(countryName, cityName));
-        } catch (JsonProcessingException | UnirestException e) {
-            log.warn("Not able to get city={} info {}", cityName, e.getMessage());
+        } catch (JsonProcessingException | UnirestException | JSONException e) {
+            log.error("Not able to get city={} info {}", cityName, e.getMessage());
             //TODO or change to JsonProcessingException
 //            return mapper.writeValueAsString("There isn't that location, try again");
             throw e;
