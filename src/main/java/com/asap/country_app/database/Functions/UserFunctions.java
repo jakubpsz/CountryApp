@@ -13,6 +13,17 @@ import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfo
 
 public class UserFunctions {
 
+    public static final Function<User, UserDto> userToUserDTOCreate = user ->  new UserDto(
+            user.getId(),
+            user.getEmail(),
+            user.getPassword()
+    );
+
+    public static final Function<UserDto,User> userDTOToUserCreate = userDto -> new User(
+            userDto.getEmail(),
+            userDto.getPassword()
+    );
+
     public static final Function<User, UserDto> userToUserDTO = user ->  new UserDto(
             user.getId(),
             user.getEmail(),

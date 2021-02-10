@@ -1,14 +1,11 @@
 package com.asap.country_app.database.Functions;
 
-import com.asap.country_app.database.user.User;
 import com.asap.country_app.database.user.UserInfo;
-import com.asap.country_app.dto.UserDto;
 import com.asap.country_app.dto.UserInfoDto;
 
 import java.util.function.Function;
 
-import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUser;
-import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTO;
+import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 
 public class UserInfoFunctions {
 
@@ -20,7 +17,7 @@ public class UserInfoFunctions {
             userInfo.getDateOfBirth(),
             userInfo.getCodeOfCountry(),
             userInfo.getCurrency(),
-            userToUserDTO.apply(userInfo.getUser())
+            userToUserDTOCreate.apply(userInfo.getUser())
     );
 
     public static final Function<UserInfoDto,UserInfo> userInfoDTOToUserInfo = userInfoDto -> new UserInfo(
@@ -29,7 +26,6 @@ public class UserInfoFunctions {
             userInfoDto.getName(),
             userInfoDto.getDateOfBirth(),
             userInfoDto.getCodeOfCountry(),
-            userInfoDto.getCurrency(),
-            userDTOToUser.apply(userInfoDto.getUserDto())
+            userInfoDto.getCurrency()
             );
 }

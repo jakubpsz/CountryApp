@@ -1,16 +1,16 @@
 package com.asap.country_app.controller;
 
-import com.asap.country_app.database.user.Location;
-import com.asap.country_app.database.user.UserInfo;
-import com.asap.country_app.database.user.User;
 import com.asap.country_app.dto.UserDto;
+import com.asap.country_app.dto.UserInfoDto;
 import com.asap.country_app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
-import java.util.List;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
@@ -24,8 +24,15 @@ public class UserController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED) //TODO ustawic status zeby byl inny gdy blad
     public UserDto saveUser(@RequestBody UserDto userDto) {
         return userService.saveUser(userDto);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public UserInfoDto addUserInfo(@RequestBody UserDto userDto) {
+        return userService.editUserInfo(userDto);
     }
 
 

@@ -73,4 +73,9 @@ public class User {
         this.likedLocations = likedLocations;
         this.locationsWantedToVisit = locationsWantedToVisit;
     }
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 }

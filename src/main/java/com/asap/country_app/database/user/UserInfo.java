@@ -45,4 +45,13 @@ public class UserInfo {
         this.currency = currency;
         this.user = user;
     }
+
+    public UserInfo(String nickName, String name, String lastName, String dateOfBirth, String codeOfCountry, String currency) {
+        this.nickName = nickName;
+        this.name = name;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.codeOfCountry = codeOfCountry;
+        this.currency = currency;
+    }
 }
