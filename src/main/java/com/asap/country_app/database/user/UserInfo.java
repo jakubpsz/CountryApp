@@ -32,10 +32,8 @@ public class UserInfo {
     private String currency;
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL,mappedBy = "userInfo")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    @OneToOne(mappedBy = "userInfo")
     private User user;
-
 
 }

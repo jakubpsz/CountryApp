@@ -33,30 +33,30 @@ public class User {
     private String password;
 
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
     private UserInfo userInfo;
 
     @ManyToMany
     @JoinTable(
-            name = "location_visitedCities",
+            name = "location_visitedLocations",
             joinColumns = @JoinColumn(name = "location_id"),
             inverseJoinColumns = @JoinColumn(name = "visited_id")
     )
-    private List<Location> visitedCities;
+    private List<Location> visitedLocations;
     @ManyToMany
     @JoinTable(
-            name = "location_likedCities",
+            name = "location_likedLocations",
             joinColumns = @JoinColumn(name = "location_id"),
-            inverseJoinColumns = @JoinColumn(name = "likedCities_id")
+            inverseJoinColumns = @JoinColumn(name = "likedLocations_id")
     )
-    private List<Location> likedCities;
+    private List<Location> likedLocations;
     @ManyToMany
     @JoinTable(
-            name = "location_citiesWantedToVisit",
+            name = "location_locationWantedToVisit",
             joinColumns = @JoinColumn(name = "location_id"),
-            inverseJoinColumns = @JoinColumn(name = "citiesWantedToVisit_id")
+            inverseJoinColumns = @JoinColumn(name = "locationsWantedToVisit_id")
     )
-    private List<Location> citiesWantedToVisit;
+    private List<Location> locationsWantedToVisit;
 
     public User(String email, String password) {
         this.email = email;
