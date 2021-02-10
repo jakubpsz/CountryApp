@@ -30,9 +30,9 @@ public class Location {
 
     @ManyToMany
     @JoinTable(
-            name = "user_visitedByCities",
+            name = "user_visitedCities",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "visitedByCities_id")
+            inverseJoinColumns = @JoinColumn(name = "visitedCities_id")
     )
     private List<User> visitedCities;
     @ManyToMany
@@ -44,7 +44,7 @@ public class Location {
     private List<User> likedCities;
     @ManyToMany
     @JoinTable(
-            name = "user_likedCities",
+            name = "user_WantedToVisitCities",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "citiesWantedToVisit_id")
     )

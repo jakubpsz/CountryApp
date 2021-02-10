@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,9 +33,7 @@ public class User {
     private String password;
 
 
-    //@OneToOne(mappedBy = "user")
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "userInfo_id", referencedColumnName = "id")
+    @OneToOne(mappedBy = "user")
     private UserInfo userInfo;
 
     @ManyToMany
