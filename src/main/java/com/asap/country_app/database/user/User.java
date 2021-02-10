@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -33,17 +34,17 @@ public class User {
     private String password;
 
 
-    @OneToOne
+    @OneToOne (cascade = CascadeType.ALL)
     private UserInfo userInfo;
 
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "location_visitedLocations",
             joinColumns = @JoinColumn(name = "location_id"),
             inverseJoinColumns = @JoinColumn(name = "visited_id")
     )
     private List<Location> visitedLocations;
-    @ManyToMany
+    @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "location_likedLocations",
             joinColumns = @JoinColumn(name = "location_id"),

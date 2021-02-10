@@ -5,6 +5,7 @@ import com.asap.country_app.dto.UserInfoDto;
 
 import java.util.function.Function;
 
+import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 
 public class UserInfoFunctions {
@@ -26,6 +27,7 @@ public class UserInfoFunctions {
             userInfoDto.getName(),
             userInfoDto.getDateOfBirth(),
             userInfoDto.getCodeOfCountry(),
-            userInfoDto.getCurrency()
+            userInfoDto.getCurrency(),
+            userDTOToUserCreate.apply(userInfoDto.getUserDto())
             );
 }

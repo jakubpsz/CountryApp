@@ -42,14 +42,13 @@ public class UserService {
 
     @Transactional
     public UserInfoDto editUserInfo(UserDto userDto) {
-
+        userDto.getUserInfoDto().setUserDto(userDto);
         User user = userRepository.findByEmail(userDto.getEmail()).get();
+
         user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
-        log.info("UserInfo for " + user + " is changed: " + user.getUserInfo());
-
+        user = userRepository.save(user); //TODO Ivan czy to musi być? Bo bez tego też działa
+        log.info("UserInfo for " + user.getEmail() + " is changed: " + user.getUserInfo());
         return userInfoToUserInfoDTO.apply(user.getUserInfo());
-
-
     }
 
 
