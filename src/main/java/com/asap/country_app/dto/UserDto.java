@@ -16,21 +16,21 @@ public class UserDto {
         private String email;
         private String password;
 
-        private UserInfoDto userInfo;
+        private UserInfoDto userInfoDto;
 
-        private List<LocationDto> visitedCities;
+        private List<LocationDto> visitedLocations;
 
-        private List<LocationDto> likedCities;
+        private List<LocationDto> likedLocations;
 
-        private List<LocationDto> citiesWantedToVisit;
+        private List<LocationDto> locationsWantedToVisit;
 
-    public UserDto(String email, String password, UserInfoDto userInfo, List<LocationDto> visitedCities, List<LocationDto> likedCities, List<LocationDto> citiesWantedToVisit) {
+    public UserDto(String email, String password, UserInfoDto userInfoDto, List<LocationDto> visitedLocations, List<LocationDto> likedLocations, List<LocationDto> locationsWantedToVisit) {
         this.email = email;
         this.password = password;
-        this.userInfo = userInfo;
-        this.visitedCities = visitedCities;
-        this.likedCities = likedCities;
-        this.citiesWantedToVisit = citiesWantedToVisit;
+        this.userInfoDto = userInfoDto;
+        this.visitedLocations = visitedLocations;
+        this.likedLocations = likedLocations;
+        this.locationsWantedToVisit = locationsWantedToVisit;
     }
 }
 

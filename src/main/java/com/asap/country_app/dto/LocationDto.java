@@ -1,6 +1,5 @@
 package com.asap.country_app.dto;
 
-import com.asap.country_app.database.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,18 +18,18 @@ public class LocationDto {
     private String country;
     private String city;
 
-    private List<UserDto> visitedByCities;
+    private List<UserDto> visitedLocationsDto;
 
-    private List<UserDto> likedByCities;
+    private List<UserDto> likedLocationsDto;
 
-    private List<UserDto> citiesWantedToVisitBy;
+    private List<UserDto> locationsWantedToVisitDto;
 
-    public LocationDto(String country, String city, List<UserDto> visitedByCities, List<UserDto> likedByCities, List<UserDto> citiesWantedToVisitBy) {
+    public LocationDto(String country, String city, List<UserDto> visitedLocationsDto, List<UserDto> likedLocationsDto, List<UserDto> locationsWantedToVisitDto) {
         this.country = country;
         this.city = city;
-        this.visitedByCities = visitedByCities;
-        this.likedByCities = likedByCities;
-        this.citiesWantedToVisitBy = citiesWantedToVisitBy;
+        this.visitedLocationsDto = visitedLocationsDto;
+        this.likedLocationsDto = likedLocationsDto;
+        this.locationsWantedToVisitDto = locationsWantedToVisitDto;
     }
 
 

@@ -50,4 +50,5 @@ public class Location {
     )
     private List<User> locationsWantedToVisit;
 
+
 }

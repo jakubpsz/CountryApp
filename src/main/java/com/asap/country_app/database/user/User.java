@@ -62,4 +62,13 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+    public User(String email, String password, UserInfo userInfo, List<Location> visitedLocations, List<Location> likedLocations, List<Location> locationsWantedToVisit) {
+        this.email = email;
+        this.password = password;
+        this.userInfo = userInfo;
+        this.visitedLocations = visitedLocations;
+        this.likedLocations = likedLocations;
+        this.locationsWantedToVisit = locationsWantedToVisit;
+    }
 }
