@@ -24,13 +24,4 @@ public class LocationDto {
 
     private List<UserDto> locationsWantedToVisitDto;
 
-    public LocationDto(String country, String city, List<UserDto> visitedLocationsDto, List<UserDto> likedLocationsDto, List<UserDto> locationsWantedToVisitDto) {
-        this.country = country;
-        this.city = city;
-        this.visitedLocationsDto = visitedLocationsDto;
-        this.likedLocationsDto = likedLocationsDto;
-        this.locationsWantedToVisitDto = locationsWantedToVisitDto;
-    }
-
-
 }

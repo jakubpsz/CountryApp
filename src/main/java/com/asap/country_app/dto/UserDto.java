@@ -24,14 +24,6 @@ public class UserDto {
 
         private List<LocationDto> locationsWantedToVisit;
 
-    public UserDto(String email, String password, UserInfoDto userInfoDto, List<LocationDto> visitedLocations, List<LocationDto> likedLocations, List<LocationDto> locationsWantedToVisit) {
-        this.email = email;
-        this.password = password;
-        this.userInfoDto = userInfoDto;
-        this.visitedLocations = visitedLocations;
-        this.likedLocations = likedLocations;
-        this.locationsWantedToVisit = locationsWantedToVisit;
-    }
 }
 
 

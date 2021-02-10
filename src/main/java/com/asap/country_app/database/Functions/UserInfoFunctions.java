@@ -12,7 +12,7 @@ import static com.asap.country_app.database.Functions.UserFunctions.userToUserDT
 
 public class UserInfoFunctions {
 
-    public static final Function<UserInfo, UserDto> userInfoToUserInfoDTO = userInfo ->  new UserInfoDto(
+    public static final Function<UserInfo, UserInfoDto> userInfoToUserInfoDTO = userInfo ->  new UserInfoDto(
             userInfo.getId(),
             userInfo.getNickName(),
             userInfo.getLastName(),

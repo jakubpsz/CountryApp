@@ -58,7 +58,9 @@ public class User {
     )
     private List<Location> locationsWantedToVisit;
 
-    public User(String email, String password) {
+
+    public User(UUID id, String email, String password) {
+        this.id = id;
         this.email = email;
         this.password = password;
     }

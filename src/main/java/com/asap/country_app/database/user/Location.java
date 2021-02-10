@@ -50,5 +50,11 @@ public class Location {
     )
     private List<User> locationsWantedToVisit;
 
-
+    public Location(String country, String city, List<User> visitedLocations, List<User> likedLocations, List<User> locationsWantedToVisit) {
+        this.country = country;
+        this.city = city;
+        this.visitedLocations = visitedLocations;
+        this.likedLocations = likedLocations;
+        this.locationsWantedToVisit = locationsWantedToVisit;
+    }
 }

@@ -8,7 +8,11 @@ import javassist.NotFoundException;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.UUID;
+import java.util.function.IntFunction;
 import java.util.stream.Collectors;
+
+import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUser;
+import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTO;
 
 
 @Service
@@ -21,15 +25,15 @@ public class UserService {
     }
 
     @Transactional
-    public UserDto savePerson(UserDto personDto){
+    public UserDto saveUser(UserDto userDto){
 
         //1. pobrac adres jesli istnieje
         //2. dopisac adres do osoby
         //3. zapisa0107  osobe
 
-        User user = user.apply(personDto);
-        user = userRepository.save(person);
-        return personToPersonDTO.apply(person);
+        User user = userDTOToUser.apply(userDto);
+
+        return userToUserDTO.apply(userRepository.save(user));
     }
 
 
