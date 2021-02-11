@@ -21,6 +21,4 @@ public class UserInfoDto {
     private String codeOfCountry;
     private String currency;
 
-    private UserDto userDto;
-
 }

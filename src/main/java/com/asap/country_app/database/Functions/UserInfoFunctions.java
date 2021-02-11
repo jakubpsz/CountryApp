@@ -5,9 +5,6 @@ import com.asap.country_app.dto.UserInfoDto;
 
 import java.util.function.Function;
 
-import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
-import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
-
 public class UserInfoFunctions {
 
 //    private UserRepository userRepository;
@@ -16,25 +13,23 @@ public class UserInfoFunctions {
 //        this.userRepository = userRepository;
 //    }
 
-    public static final Function<UserInfo, UserInfoDto> userInfoToUserInfoDTO = userInfo ->  new UserInfoDto(
+    public static final Function<UserInfo, UserInfoDto> userInfoToUserInfoDTO = userInfo -> new UserInfoDto(
             userInfo.getId(),
             userInfo.getNickName(),
             userInfo.getLastName(),
             userInfo.getName(),
             userInfo.getDateOfBirth(),
             userInfo.getCodeOfCountry(),
-            userInfo.getCurrency(),
-            userToUserDTOCreate.apply(userInfo.getUser())
+            userInfo.getCurrency()
     );
 
-    public static final Function<UserInfoDto,UserInfo> userInfoDTOToUserInfo = userInfoDto -> new UserInfo(
+    public static final Function<UserInfoDto, UserInfo> userInfoDTOToUserInfo = userInfoDto -> new UserInfo(
             userInfoDto.getNickName(),
             userInfoDto.getLastName(),
             userInfoDto.getName(),
             userInfoDto.getDateOfBirth(),
             userInfoDto.getCodeOfCountry(),
-            userInfoDto.getCurrency(),
+            userInfoDto.getCurrency()
 //            userRepository.findByEmail(userInfoDto.getUserDto().getEmail()).get()
-            userDTOToUserCreate.apply(userInfoDto.getUserDto())
-            );
+    );
 }

@@ -5,14 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,17 +15,15 @@ import java.util.UUID;
 @NoArgsConstructor
 public class User {
 
-
     @Id
     @GeneratedValue
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
-
     //    @Email
+    @Column(unique = true)
     private String email;
     private String password;
-
 
     @OneToOne (cascade = CascadeType.ALL)
     private UserInfo userInfo;
@@ -44,6 +35,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "visited_id")
     )
     private List<Location> visitedLocations;
+
     @ManyToMany (cascade = CascadeType.ALL)
     @JoinTable(
             name = "location_likedLocations",
