@@ -1,5 +1,6 @@
 package com.asap.country_app.database.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -34,6 +35,7 @@ public class UserInfo {
 
     @OneToOne(cascade = CascadeType.ALL,mappedBy = "userInfo")
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @JsonIgnore
     private User user;
 
     public UserInfo(String nickName, String name, String lastName, String dateOfBirth, String codeOfCountry, String currency, User user) {
