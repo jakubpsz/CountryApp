@@ -35,11 +35,7 @@ public class UserController {
         return userService.editUserInfo(userDto);
     }
 
-    @PutMapping
-    @ResponseStatus(HttpStatus.OK)
-    public UserInfoDto addLikedLocation(@RequestBody UserDto userDto) {
-        return userService.addLikedLocation(userDto);
-    }
+
 
 //    @PutMapping
 //    @ResponseStatus(HttpStatus.OK)
