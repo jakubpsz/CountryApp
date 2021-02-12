@@ -24,14 +24,14 @@ public class UserController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED) //TODO ustawic status zeby byl inny gdy blad
+    @ResponseStatus(HttpStatus.CREATED) //TODO Ivan ustawic status zeby byl inny gdy blad
     public UserDto saveUser(@RequestBody UserDto userDto) {
         return userService.saveUser(userDto);
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public UserInfoDto addUserInfo(@RequestBody UserDto userDto) {
+    public UserInfoDto editUserInfo(@RequestBody UserDto userDto) {
         return userService.editUserInfo(userDto);
     }
 

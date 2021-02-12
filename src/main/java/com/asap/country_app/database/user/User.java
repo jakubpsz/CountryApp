@@ -20,7 +20,7 @@ public class User {
     @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
-    //    @Email
+    //    @Email //TODO zrobic mail lower
     @Column(unique = true)
     private String email;
     private String password;

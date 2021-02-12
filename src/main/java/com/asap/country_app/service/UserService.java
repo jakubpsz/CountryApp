@@ -1,8 +1,10 @@
 package com.asap.country_app.service;
 
 import com.asap.country_app.database.errors.UserNotFoundException;
+import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
 import com.asap.country_app.database.user.User;
+import com.asap.country_app.database.user.UserInfo;
 import com.asap.country_app.dto.UserDto;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
@@ -22,14 +24,16 @@ import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfo
 public class UserService {
 
     private final UserRepository userRepository;
+    private final UserInfoRepository userInfoR;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, UserInfoRepository userInfoR) {
         this.userRepository = userRepository;
+        this.userInfoR = userInfoR;
     }
 
     @Transactional
     public UserDto saveUser(UserDto userDto) {
-
+//TODO sprawdzenie wielkosci liter w mailu?
         if (userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
             User user = userDTOToUserCreate.apply(userDto);
             log.info("User created: " + userDto.getEmail());
@@ -44,11 +48,15 @@ public class UserService {
     public UserInfoDto editUserInfo(UserDto userDto) {
 
         User user = userRepository.findByEmail(userDto.getEmail()).get();
-        log.info(user.getId() + "1");
-        user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
-
-        log.info(user.getId() + "2");
-        user = userRepository.save(user);    //TODO Ivan czy to musi być? Bo bez tego też działa
+        if (user.getUserInfo() == null) {
+            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
+            user = userRepository.save(user);
+        } else {
+            UserInfo userInfoId = user.getUserInfo();
+            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
+            user = userRepository.save(user);
+            userInfoR.delete(userInfoId);
+        }
         log.info("UserInfo for " + user.getEmail() + user.getId() + " is changed: " + user.getUserInfo());
         return userInfoToUserInfoDTO.apply(user.getUserInfo());
     }

@@ -7,12 +7,6 @@ import java.util.function.Function;
 
 public class UserInfoFunctions {
 
-//    private UserRepository userRepository;
-//
-//    public UserInfoFunctions(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-
     public static final Function<UserInfo, UserInfoDto> userInfoToUserInfoDTO = userInfo -> new UserInfoDto(
             userInfo.getId(),
             userInfo.getNickName(),
@@ -30,6 +24,5 @@ public class UserInfoFunctions {
             userInfoDto.getDateOfBirth(),
             userInfoDto.getCodeOfCountry(),
             userInfoDto.getCurrency()
-//            userRepository.findByEmail(userInfoDto.getUserDto().getEmail()).get()
     );
 }
