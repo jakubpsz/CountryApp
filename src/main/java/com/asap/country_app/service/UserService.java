@@ -94,4 +94,9 @@ public class UserService {
     }
 
 
+    public UserInfoDto addLikedLocation(UserDto userDto) {
+
+
+
+    }
 }

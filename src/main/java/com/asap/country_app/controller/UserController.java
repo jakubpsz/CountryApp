@@ -35,6 +35,24 @@ public class UserController {
         return userService.editUserInfo(userDto);
     }
 
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public UserInfoDto addLikedLocation(@RequestBody UserDto userDto) {
+        return userService.addLikedLocation(userDto);
+    }
+
+//    @PutMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public UserInfoDto addVisitedLocation(@RequestBody UserDto userDto) {
+//        return userService.addLikedLocation(userDto);
+//    }
+//
+//    @PutMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public UserInfoDto addLocationWantedToVisit(@RequestBody UserDto userDto) {
+//        return userService.addLikedLocation(userDto);
+//    }
+
 
 //    @CrossOrigin
 //    @PutMapping("/register")

@@ -36,6 +36,7 @@ public class CityController {
         }
     }
 
+
     //TODO remove when not needed
 //    @CrossOrigin
 //    @GetMapping("/city")

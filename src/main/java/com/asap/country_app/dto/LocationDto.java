@@ -24,4 +24,14 @@ public class LocationDto {
 
     private List<UserDto> locationsWantedToVisitDto;
 
+    public LocationDto(UUID id, String country, String city) {
+        this.id = id;
+        this.country = country;
+        this.city = city;
+    }
+
+    public LocationDto(String country, String city) {
+        this.country = country;
+        this.city = city;
+    }
 }
