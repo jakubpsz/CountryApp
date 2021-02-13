@@ -2,8 +2,6 @@ package com.asap.country_app.controller;
 
 import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.service.LocationService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.mashape.unirest.http.exceptions.UnirestException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,8 +27,8 @@ public class LocationControler {
     //6. Znajduje lokacie id i user id i dodaje w obu miejscach powiazanie
 
     @CrossOrigin
-    @PostMapping("/city")
-    public LocationDto saveLocation(LocationDto locationDto) throws JsonProcessingException, UnirestException {
+    @PostMapping("/location")
+    public LocationDto saveLocation(LocationDto locationDto) {
             log.info("Save Location");
             return locationService.saveLocation(locationDto);
     }

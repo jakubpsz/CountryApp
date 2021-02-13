@@ -6,6 +6,8 @@ import com.asap.country_app.dto.LocationDto;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.Optional;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.LocationFunctions.locationToLocationDTO;
@@ -22,11 +24,16 @@ public class LocationService {
     @Transactional
     public LocationDto saveLocation(LocationDto locationDto) {
 
-        if (locationRepository.findByCity(locationDto.getCity()).isEmpty()) {
-            Location location = locationDTOToLocation.apply(locationDto);
-            return locationToLocationDTO.apply(locationRepository.save(location));
-        } else {
-            return locationToLocationDTO.apply(locationRepository.findByCity(locationDto.getCity()).get());
+        Optional<List<Location>> locationOpt = locationRepository.findAllByCity(locationDto.getCity());
+
+        if (locationOpt.isPresent()) {
+            for (Location l : locationOpt.get()) {
+                if (l.getCountry().equals(locationDto.getCountry())) {
+                    return locationToLocationDTO.apply(locationRepository.save(l));
+                }
+            }
         }
+        Location location = locationDTOToLocation.apply(locationDto);
+        return locationToLocationDTO.apply(locationRepository.save(location));
     }
 }

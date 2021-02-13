@@ -5,6 +5,7 @@ import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
 import com.asap.country_app.database.user.User;
 import com.asap.country_app.database.user.UserInfo;
+import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.dto.UserDto;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
@@ -25,10 +26,12 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final UserInfoRepository userInfoR;
+    private final LocationService locationService;
 
-    public UserService(UserRepository userRepository, UserInfoRepository userInfoR) {
+    public UserService(UserRepository userRepository, UserInfoRepository userInfoR, LocationService locationService) {
         this.userRepository = userRepository;
         this.userInfoR = userInfoR;
+        this.locationService = locationService;
     }
 
     @Transactional
@@ -91,6 +94,14 @@ public class UserService {
 
         User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         userRepository.delete(user);
+    }
+
+    public void addLikedLocation(LocationDto locationDto, UUID userId) {
+
+        locationService.saveLocation(locationDto);
+
+
+
     }
 
 

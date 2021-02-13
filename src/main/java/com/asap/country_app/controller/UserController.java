@@ -1,5 +1,6 @@
 package com.asap.country_app.controller;
 
+import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.dto.UserDto;
 import com.asap.country_app.dto.UserInfoDto;
 import com.asap.country_app.service.UserService;
@@ -9,8 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.UUID;
 
 
 @RestController
@@ -35,7 +39,12 @@ public class UserController {
         return userService.editUserInfo(userDto);
     }
 
-
+    @PutMapping
+    @ResponseStatus(HttpStatus.OK)
+    public String addLikedLocation(@RequestBody LocationDto locationDto, @RequestParam UUID userId) {
+        userService.addLikedLocation(locationDto, userId);
+        return "liked";
+    }
 
 //    @PutMapping
 //    @ResponseStatus(HttpStatus.OK)
