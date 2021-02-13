@@ -18,6 +18,7 @@ import java.util.UUID;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
+import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTO;
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoDTOToUserInfo;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoToUserInfoDTO;
@@ -111,9 +112,9 @@ public class UserService {
         log.info("User {} liked {}", userId, locationDto.getCity());
     }
 
-//    public UserDto getUser(UUID userId) {
-//
-//    }
+    public UserDto getUser(UUID userId) {
+        return userToUserDTO.apply(userRepository.findById(userId).get());
+    }
 
 
 //    public UserInfoDto addLikedLocation(UserDto userDto) {

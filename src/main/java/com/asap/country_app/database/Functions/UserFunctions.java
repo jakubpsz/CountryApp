@@ -29,8 +29,8 @@ public class UserFunctions {
             user.getEmail(),
             user.getPassword(),
             userInfoToUserInfoDTO.apply(user.getUserInfo()),
-            user.getLikedLocations().stream().map(locationToLocationDTO).collect(Collectors.toList()),
             user.getLocationsWantedToVisit().stream().map(locationToLocationDTO).collect(Collectors.toList()),
+            user.getLikedLocations().stream().map(locationToLocationDTO).collect(Collectors.toList()),
             user.getVisitedLocations().stream().map(locationToLocationDTO).collect(Collectors.toList())
     );
 
@@ -38,8 +38,8 @@ public class UserFunctions {
             userDto.getEmail(),
             userDto.getPassword(),
             userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()),
-            userDto.getLikedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList()),
             userDto.getLocationsWantedToVisit().stream().map(locationDTOToLocation).collect(Collectors.toList()),
+            userDto.getLikedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList()),
             userDto.getVisitedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList())
     );
 }
