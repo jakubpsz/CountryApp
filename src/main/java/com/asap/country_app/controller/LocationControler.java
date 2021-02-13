@@ -29,7 +29,6 @@ public class LocationControler {
     @CrossOrigin
     @PostMapping("/location")
     public LocationDto saveLocation(LocationDto locationDto) {
-            log.info("Save Location");
             return locationService.saveLocation(locationDto);
     }
 }

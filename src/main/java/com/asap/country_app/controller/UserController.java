@@ -6,6 +6,7 @@ import com.asap.country_app.dto.UserInfoDto;
 import com.asap.country_app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -27,6 +28,11 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping
+    public UserDto getUser(@RequestParam UUID userId) {
+        return userService.getUser(userId);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) //TODO Ivan ustawic status zeby byl inny gdy blad
     public UserDto saveUser(@RequestBody UserDto userDto) {
@@ -39,7 +45,7 @@ public class UserController {
         return userService.editUserInfo(userDto);
     }
 
-    @PutMapping
+    @PutMapping ("/like")
     @ResponseStatus(HttpStatus.OK)
     public String addLikedLocation(@RequestBody LocationDto locationDto, @RequestParam UUID userId) {
         userService.addLikedLocation(locationDto, userId);

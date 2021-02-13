@@ -11,18 +11,18 @@ import static com.asap.country_app.database.Functions.UserFunctions.userToUserDT
 
 public class LocationFunctions {
 
-    public static final Function<Location, LocationDto> locationToLocationDTO = location ->  new LocationDto(
+    public static final Function<Location, LocationDto> locationToLocationDTO = location -> new LocationDto(
             location.getId(),
             location.getCountry(),
             location.getCity()
     );
 
-    public static final Function<LocationDto,Location> locationDTOToLocation = locationDto -> new Location(
+    public static final Function<LocationDto, Location> locationDTOToLocation = locationDto -> new Location(
             locationDto.getCountry(),
             locationDto.getCity()
-            );
+    );
 
-    public static final Function<Location, LocationDto> locationToLocationDTO1 = location ->  new LocationDto(
+    public static final Function<Location, LocationDto> locationToLocationDTO1 = location -> new LocationDto(
             location.getId(),
             location.getCountry(),
             location.getCity(),
@@ -31,7 +31,7 @@ public class LocationFunctions {
             location.getLikedLocations().stream().map(userToUserDTO).collect(Collectors.toList())
     );
 
-    public static final Function<LocationDto,Location> locationDTOToLocation1 = locationDto -> new Location(
+    public static final Function<LocationDto, Location> locationDTOToLocation1 = locationDto -> new Location(
             locationDto.getCountry(),
             locationDto.getCity(),
             locationDto.getLikedLocationsDto().stream().map(userDTOToUser).collect(Collectors.toList()),

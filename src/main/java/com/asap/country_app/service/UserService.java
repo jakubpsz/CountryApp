@@ -3,6 +3,7 @@ package com.asap.country_app.service;
 import com.asap.country_app.database.errors.UserNotFoundException;
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
+import com.asap.country_app.database.user.Location;
 import com.asap.country_app.database.user.User;
 import com.asap.country_app.database.user.UserInfo;
 import com.asap.country_app.dto.LocationDto;
@@ -12,8 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.UUID;
 
+import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoDTOToUserInfo;
@@ -96,13 +99,21 @@ public class UserService {
         userRepository.delete(user);
     }
 
+    @Transactional
     public void addLikedLocation(LocationDto locationDto, UUID userId) {
 
         locationService.saveLocation(locationDto);
-
-
-
+        User user = userRepository.findById(userId).get();
+        List<Location> list = user.getLikedLocations();
+        list.add(locationDTOToLocation.apply(locationDto));
+        user.setLikedLocations(list);
+        userRepository.save(user);
+        log.info("User {} liked {}", userId, locationDto.getCity());
     }
+
+//    public UserDto getUser(UUID userId) {
+//
+//    }
 
 
 //    public UserInfoDto addLikedLocation(UserDto userDto) {
