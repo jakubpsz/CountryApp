@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
@@ -22,6 +23,7 @@ import static com.asap.country_app.database.Functions.UserFunctions.userToUserDT
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoDTOToUserInfo;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoToUserInfoDTO;
+import static java.util.stream.Collectors.toList;
 
 
 @Service
@@ -103,9 +105,17 @@ public class UserService {
     @Transactional
     public void addLikedLocation(LocationDto locationDto, UUID userId) {
 
-        locationService.saveLocation(locationDto);
+        locationDto = locationService.saveLocation(locationDto);
         User user = userRepository.findById(userId).get();
         List<Location> list = user.getLikedLocations();
+        LocationDto finalLocationDto = locationDto;
+        Optional<Location> likeLocationOpt = Optional.ofNullable(list.stream().filter(x -> x.getId() == finalLocationDto.getId()).collect(toList()).get(0));
+        if (likeLocationOpt.isEmpty()) {
+            list.add(locationDTOToLocation.apply(locationDto));
+        } else {
+            list.remove(likeLocationOpt.get()); //TODO tego jeszcze nie sprawdzalem czy dziala jak dziala to mozemy przerobic na wszystkie pozostale funk i mamy w obie strony
+        }
+        user.setLikedLocations(list);
         list.add(locationDTOToLocation.apply(locationDto));
         user.setLikedLocations(list);
         userRepository.save(user);
