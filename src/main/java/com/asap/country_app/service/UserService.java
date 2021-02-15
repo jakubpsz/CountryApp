@@ -135,7 +135,24 @@ public class UserService {
         return true;
     }
 
+    @Transactional
+    public boolean addWantedToVisitLocation(LocationDto locationDto, UUID userId) {
 
+        Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
+        User user = userRepository.findById(userId).orElseGet(null);
+        List<Location> list = user.getLocationsWantedToVisit();
+        if (list.contains(location)){
+            return false;
+        }
+        if(location == null){
+            location = locationDTOToLocation.apply(locationDto);
+        }
+        list.add(location);
+        user.setLocationsWantedToVisit(list);
+        userRepository.save(user);
+        log.info("User {} wanted to visit {}", userId, locationDto.getCity());
+        return true;
+    }
 
 
     public UserDto getUser(UUID userId) {

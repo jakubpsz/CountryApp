@@ -2,7 +2,6 @@ package com.asap.country_app.controller;
 
 import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.dto.UserDto;
-import com.asap.country_app.dto.UserInfoDto;
 import com.asap.country_app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -51,7 +50,27 @@ public class UserController {
         if(userService.addLikedLocation(locationDto, userId)){
             return "liked";
         }else {
-            return "alredy liked";
+            return "already liked";
+        }
+    }
+
+    @PutMapping ("/visited")
+    @ResponseStatus(HttpStatus.OK)
+    public String addVisitedLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
+        if(userService.addVisitedLocation(locationDto, userId)){
+            return "visited";
+        }else {
+            return "already visited";
+        }
+    }
+
+    @PutMapping ("/visited")
+    @ResponseStatus(HttpStatus.OK)
+    public String addWantedToVisitLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
+        if(userService.addWantedToVisitLocation(locationDto, userId)){
+            return "visited";
+        }else {
+            return "already wanted to visit";
         }
     }
 
