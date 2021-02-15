@@ -26,19 +26,19 @@ public class Location {
     private String country;
     private String city;
 
-    @ManyToMany
-    private List<User> visitedLocations;
-    @ManyToMany
-    private List<User> likedLocations;
-    @ManyToMany
-    private List<User> locationsWantedToVisit;
+    @ManyToMany(mappedBy = "visitedLocations")
+    private List<User> visitors;
+    @ManyToMany(mappedBy = "likedLocations")
+    private List<User> likes;
+    @ManyToMany(mappedBy = "locationsWantedToVisit")
+    private List<User> whoWantsToVisit;
 
-    public Location(String country, String city, List<User> visitedLocations, List<User> likedLocations, List<User> locationsWantedToVisit) {
+    public Location(String country, String city, List<User> visitors, List<User> likes, List<User> whoWantsToVisit) {
         this.country = country;
         this.city = city;
-        this.visitedLocations = visitedLocations;
-        this.likedLocations = likedLocations;
-        this.locationsWantedToVisit = locationsWantedToVisit;
+        this.visitors = visitors;
+        this.likes = likes;
+        this.whoWantsToVisit = whoWantsToVisit;
     }
 
     public Location(String country, String city) {

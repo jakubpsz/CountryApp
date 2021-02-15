@@ -28,27 +28,27 @@ public class User {
     @OneToOne (cascade = CascadeType.ALL)
     private UserInfo userInfo;
 
-    @ManyToMany (cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "location_visitedLocations",
-//            joinColumns = @JoinColumn(name = "location_id"),
-//            inverseJoinColumns = @JoinColumn(name = "visited_id")
-//    )
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "visited_Locations",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "location_id")
+    )
     private List<Location> visitedLocations;
 
-    @ManyToMany (cascade = CascadeType.ALL)
-//    @JoinTable(
-//            name = "location_likedLocations",
-//            joinColumns = @JoinColumn(name = "location_id"),
-//            inverseJoinColumns = @JoinColumn(name = "likedLocations_id")
-//    )
+    @ManyToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "liked_Locations",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "location_id")
+    )
     private List<Location> likedLocations;
-    @ManyToMany
-//    @JoinTable(
-//            name = "location_locationWantedToVisit",
-//            joinColumns = @JoinColumn(name = "location_id"),
-//            inverseJoinColumns = @JoinColumn(name = "locationsWantedToVisit_id")
-//    )
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "location_Wanted_To_Visit",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "location_id")
+    )
     private List<Location> locationsWantedToVisit;
 
 
