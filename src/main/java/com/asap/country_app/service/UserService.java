@@ -43,6 +43,7 @@ public class UserService {
 //TODO sprawdzenie wielkosci liter w mailu?
         if (userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
             User user = userDTOToUserCreate.apply(userDto);
+            user.setUserInfo(new UserInfo());
             log.info("User created: " + userDto.getEmail());
             return userToUserDTOCreate.apply(userRepository.save(user));
         } else {
@@ -51,22 +52,22 @@ public class UserService {
         }
     }
 
-    @Transactional
-    public UserInfoDto editUserInfo(UserDto userDto) {
-
-        User user = userRepository.findByEmail(userDto.getEmail()).orElseGet(null);
-        if (user.getUserInfo() == null) {
-            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
-            user = userRepository.save(user);
-        } else {
-            UserInfo userInfoId = user.getUserInfo();
-            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
-            user = userRepository.save(user);
-            userInfoR.delete(userInfoId);
-        }
-        log.info("UserInfo for " + user.getEmail() + user.getId() + " is changed: " + user.getUserInfo());
-        return userInfoToUserInfoDTO.apply(user.getUserInfo());
-    }
+//    @Transactional
+//    public UserInfoDto editUserInfo(UserDto userDto) {
+//
+//        User user = userRepository.findByEmail(userDto.getEmail()).orElseGet(null);
+//        if (user.getUserInfo() == null) {
+//            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
+//            user = userRepository.save(user);
+//        } else {
+//            UserInfo userInfoId = user.getUserInfo();
+//            user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
+//            user = userRepository.save(user);
+//            userInfoR.delete(userInfoId);
+//        }
+//        log.info("UserInfo for " + user.getEmail() + user.getId() + " is changed: " + user.getUserInfo());
+//        return userInfoToUserInfoDTO.apply(user.getUserInfo());
+//    }
 
 
     //1. pobrac adres jesli istnieje

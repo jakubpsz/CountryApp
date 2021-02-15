@@ -39,11 +39,11 @@ public class UserController {
         return userService.saveUser(userDto);
     }
 
-    @PutMapping
-    @ResponseStatus(HttpStatus.OK)
-    public UserInfoDto editUserInfo(@RequestBody UserDto userDto) {
-        return userService.editUserInfo(userDto);
-    }
+//    @PutMapping
+//    @ResponseStatus(HttpStatus.OK)
+//    public UserInfoDto editUserInfo(@RequestBody UserDto userDto) {
+//        return userService.editUserInfo(userDto);
+//    }
 
     @PutMapping ("/like")
     @ResponseStatus(HttpStatus.OK)
