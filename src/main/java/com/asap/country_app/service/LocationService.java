@@ -7,8 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Optional;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.LocationFunctions.locationToLocationDTO;
@@ -26,20 +24,17 @@ public class LocationService {
     @Transactional
     public LocationDto saveLocation(LocationDto locationDto) {
 
-        Optional<List<Location>> locationOpt = locationRepository.findAllByCity(locationDto.getCity());
-
-        if (locationOpt.isPresent()) {
-            for (Location l : locationOpt.get()) {
-                if (l.getCountry().equals(locationDto.getCountry())) {
-                    log.info("Location existed early");
-                    return locationToLocationDTO.apply(locationRepository.save(l));
-                }
-            }
+        Location location = locationRepository.findLocationByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
+        if(location == null){
+            location = locationDTOToLocation.apply(locationDto);
+            log.info("Save Location");
+            return locationToLocationDTO.apply(locationRepository.save(location));
+        }else {
+            log.warn("Location existed early");
+            return locationDto;
         }
-        Location location = locationDTOToLocation.apply(locationDto);
-        log.info("Save Location");
-        return locationToLocationDTO.apply(locationRepository.save(location));
     }
+
     @Transactional
     public Location findByCountryAndCity(String country, String city){
         return locationRepository.findLocationByCountryAndCity(country, city);
