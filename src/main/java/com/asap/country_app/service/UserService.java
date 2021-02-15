@@ -8,7 +8,6 @@ import com.asap.country_app.database.user.User;
 import com.asap.country_app.database.user.UserInfo;
 import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.dto.UserDto;
-import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +19,6 @@ import static com.asap.country_app.database.Functions.LocationFunctions.location
 import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTO;
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
-import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoDTOToUserInfo;
-import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoToUserInfoDTO;
 
 
 @Service
@@ -118,6 +115,28 @@ public class UserService {
         log.info("User {} liked {}", userId, locationDto.getCity());
         return true;
     }
+
+    @Transactional
+    public boolean addVisitedLocation(LocationDto locationDto, UUID userId) {
+
+        Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
+        User user = userRepository.findById(userId).orElseGet(null);
+        List<Location> list = user.getVisitedLocations();
+        if (list.contains(location)){
+            return false;
+        }
+        if(location == null){
+            location = locationDTOToLocation.apply(locationDto);
+        }
+        list.add(location);
+        user.setVisitedLocations(list);
+        userRepository.save(user);
+        log.info("User {} visited {}", userId, locationDto.getCity());
+        return true;
+    }
+
+
+
 
     public UserDto getUser(UUID userId) {
         return userToUserDTO.apply(userRepository.findById(userId).orElseThrow());
