@@ -3,7 +3,6 @@ package com.asap.country_app.service;
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
 import com.asap.country_app.database.user.User;
-import com.asap.country_app.database.user.UserInfo;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -18,14 +17,17 @@ import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfo
 @Slf4j
 public class UserInfoService {
     private final UserRepository userRepository;
+    private final UserInfoRepository userInfoRepository;
 
-    public UserInfoService(UserRepository userRepository) {
+    public UserInfoService(UserRepository userRepository, UserInfoRepository userInfoRepository) {
         this.userRepository = userRepository;
+        this.userInfoRepository = userInfoRepository;
     }
 
     @Transactional
     public UserInfoDto editUserInfo(UserInfoDto userInfoDto, UUID userId){
         User user = userRepository.findById(userId).orElseThrow();
+        userInfoRepository.delete(user.getUserInfo());
         user.setUserInfo(userInfoDTOToUserInfo.apply(userInfoDto));
         log.info("UserInfo for " + user.getEmail() + " " + user.getId() + " is changed: " + user.getUserInfo());
         return userInfoToUserInfoDTO.apply(userRepository.save(user).getUserInfo());

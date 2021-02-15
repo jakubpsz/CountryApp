@@ -64,10 +64,10 @@ public class UserController {
         }
     }
 
-    @PutMapping ("/visited")
+    @PutMapping ("/wantToVisit")
     @ResponseStatus(HttpStatus.OK)
     public String addWantedToVisitLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
-        if(userService.addWantedToVisitLocation(locationDto, userId)){
+        if(userService.addWantToVisitLocation(locationDto, userId)){
             return "visited";
         }else {
             return "already wanted to visit";

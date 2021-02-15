@@ -102,17 +102,13 @@ public class UserService {
 
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
         User user = userRepository.findById(userId).orElseGet(null);
+
         List<Location> list = user.getLikedLocations();
-        if (list.contains(location)){
-            return false;
-        }
-        if(location == null){
-            location = locationDTOToLocation.apply(locationDto);
-        }
-        list.add(location);
+        changeLocationStatus(locationDto, userId, location, list);
+
         user.setLikedLocations(list);
         userRepository.save(user);
-        log.info("User {} liked {}", userId, locationDto.getCity());
+
         return true;
     }
 
@@ -121,36 +117,39 @@ public class UserService {
 
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
         User user = userRepository.findById(userId).orElseGet(null);
+
         List<Location> list = user.getVisitedLocations();
-        if (list.contains(location)){
-            return false;
-        }
-        if(location == null){
-            location = locationDTOToLocation.apply(locationDto);
-        }
-        list.add(location);
+        changeLocationStatus(locationDto, userId, location, list);
+
         user.setVisitedLocations(list);
         userRepository.save(user);
-        log.info("User {} visited {}", userId, locationDto.getCity());
         return true;
     }
 
-    @Transactional
-    public boolean addWantedToVisitLocation(LocationDto locationDto, UUID userId) {
-
-        Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
-        List<Location> list = user.getLocationsWantedToVisit();
-        if (list.contains(location)){
-            return false;
-        }
+    private void changeLocationStatus(LocationDto locationDto, UUID userId, Location location, List<Location> list) {
         if(location == null){
             location = locationDTOToLocation.apply(locationDto);
         }
-        list.add(location);
+        if (list.contains(location)){
+            list.remove(location);
+            log.info("User {} remove visited {}", userId, locationDto.getCity());
+        } else {
+            list.add(location);
+            log.info("User {} add visited {}", userId, locationDto.getCity());
+        }
+    }
+
+    @Transactional
+    public boolean addWantToVisitLocation(LocationDto locationDto, UUID userId) {
+
+        Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
+        User user = userRepository.findById(userId).orElseGet(null);
+
+        List<Location> list = user.getLocationsWantedToVisit();
+        changeLocationStatus(locationDto, userId, location, list);
+
         user.setLocationsWantedToVisit(list);
         userRepository.save(user);
-        log.info("User {} wanted to visit {}", userId, locationDto.getCity());
         return true;
     }
 
