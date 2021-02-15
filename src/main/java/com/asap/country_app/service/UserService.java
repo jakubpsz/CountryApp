@@ -104,6 +104,7 @@ public class UserService {
         User user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getLikedLocations();
+        log.info("User {} change status liked for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, userId, location, list);
 
         user.setLikedLocations(list);
@@ -119,10 +120,12 @@ public class UserService {
         User user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getVisitedLocations();
+        log.info("User {} change status visited for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, userId, location, list);
 
         user.setVisitedLocations(list);
         userRepository.save(user);
+        log.info("User {} remove {}");
         return true;
     }
 
@@ -132,10 +135,10 @@ public class UserService {
         }
         if (list.contains(location)){
             list.remove(location);
-            log.info("User {} remove visited {}", userId, locationDto.getCity());
+            log.info("remove");
         } else {
             list.add(location);
-            log.info("User {} add visited {}", userId, locationDto.getCity());
+            log.info("add");
         }
     }
 
@@ -146,6 +149,7 @@ public class UserService {
         User user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getLocationsWantedToVisit();
+        log.info("User {} change status WantToVisit for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, userId, location, list);
 
         user.setLocationsWantedToVisit(list);
