@@ -48,8 +48,11 @@ public class UserController {
     @PutMapping ("/like")
     @ResponseStatus(HttpStatus.OK)
     public String addLikedLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
-        userService.addLikedLocation(locationDto, userId);
-        return "liked";
+        if(userService.addLikedLocation(locationDto, userId)){
+            return "liked";
+        }else {
+            return "alredy liked";
+        }
     }
 
 //    @PutMapping

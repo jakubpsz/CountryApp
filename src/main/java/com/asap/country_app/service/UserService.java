@@ -103,14 +103,14 @@ public class UserService {
     }
 
     @Transactional
-    public void addLikedLocation(LocationDto locationDto, UUID userId) {
+    public boolean addLikedLocation(LocationDto locationDto, UUID userId) {
 
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
         User user = userRepository.findById(userId).orElseGet(null);
         List<Location> list = user.getLikedLocations();
-//        LocationDto finalLocationDto = locationDto;
-//        Optional<Location> likeLocationOpt = Optional.ofNullable(list.stream()
-//                .filter(x -> x.getId() == finalLocationDto.getId()).collect(Collector.of(List)));
+        if (list.contains(location)){
+            return false;
+        }
         if(location == null){
             location = locationDTOToLocation.apply(locationDto);
         }
@@ -118,6 +118,7 @@ public class UserService {
         user.setLikedLocations(list);
         userRepository.save(user);
         log.info("User {} liked {}", userId, locationDto.getCity());
+        return true;
     }
 
     public UserDto getUser(UUID userId) {
