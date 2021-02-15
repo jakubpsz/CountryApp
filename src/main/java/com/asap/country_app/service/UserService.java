@@ -16,6 +16,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collector;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
@@ -56,7 +57,7 @@ public class UserService {
     @Transactional
     public UserInfoDto editUserInfo(UserDto userDto) {
 
-        User user = userRepository.findByEmail(userDto.getEmail()).get();
+        User user = userRepository.findByEmail(userDto.getEmail()).orElseGet(null);
         if (user.getUserInfo() == null) {
             user.setUserInfo(userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()));
             user = userRepository.save(user);
@@ -97,7 +98,6 @@ public class UserService {
 
     @Transactional
     public void deleteUser(UUID id) throws UserNotFoundException {
-
         User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         userRepository.delete(user);
     }
@@ -105,17 +105,11 @@ public class UserService {
     @Transactional
     public void addLikedLocation(LocationDto locationDto, UUID userId) {
 
-        locationDto = locationService.saveLocation(locationDto);
-        User user = userRepository.findById(userId).get();
+        User user = userRepository.findById(userId).orElseGet(null);
         List<Location> list = user.getLikedLocations();
-        LocationDto finalLocationDto = locationDto;
-        Optional<Location> likeLocationOpt = Optional.ofNullable(list.stream().filter(x -> x.getId() == finalLocationDto.getId()).collect(toList()).get(0));
-        if (likeLocationOpt.isEmpty()) {
-            list.add(locationDTOToLocation.apply(locationDto));
-        } else {
-            list.remove(likeLocationOpt.get()); //TODO tego jeszcze nie sprawdzalem czy dziala jak dziala to mozemy przerobic na wszystkie pozostale funk i mamy w obie strony
-        }
-        user.setLikedLocations(list);
+//        LocationDto finalLocationDto = locationDto;
+//        Optional<Location> likeLocationOpt = Optional.ofNullable(list.stream()
+//                .filter(x -> x.getId() == finalLocationDto.getId()).collect(Collector.of(List)));
         list.add(locationDTOToLocation.apply(locationDto));
         user.setLikedLocations(list);
         userRepository.save(user);
