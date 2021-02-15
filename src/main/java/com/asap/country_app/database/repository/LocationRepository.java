@@ -9,8 +9,7 @@ import java.util.UUID;
 
 public interface LocationRepository extends JpaRepository <Location, UUID> {
 
-    Location findByCity (String city);
-    Location findByCountry(String country);
 
+    Location findLocationByCountryAndCity(String country, String city);
     Optional<List<Location>> findAllByCity(String city);
 }

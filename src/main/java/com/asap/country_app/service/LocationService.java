@@ -40,6 +40,10 @@ public class LocationService {
         log.info("Save Location");
         return locationToLocationDTO.apply(locationRepository.save(location));
     }
+    @Transactional
+    public Location findByCountryAndCity(String country, String city){
+        return locationRepository.findLocationByCountryAndCity(country, city);
+    }
 }
 
 
