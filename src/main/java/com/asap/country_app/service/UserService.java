@@ -122,7 +122,7 @@ public class UserService {
     }
 
     public UserDto getUser(UUID userId) {
-        return userToUserDTO.apply(userRepository.findById(userId).get());
+        return userToUserDTO.apply(userRepository.findById(userId).orElseThrow());
     }
 
 
