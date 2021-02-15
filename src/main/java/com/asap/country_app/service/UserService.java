@@ -14,9 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
-import java.util.stream.Collector;
 
 import static com.asap.country_app.database.Functions.LocationFunctions.locationDTOToLocation;
 import static com.asap.country_app.database.Functions.UserFunctions.userDTOToUserCreate;
@@ -24,7 +22,6 @@ import static com.asap.country_app.database.Functions.UserFunctions.userToUserDT
 import static com.asap.country_app.database.Functions.UserFunctions.userToUserDTOCreate;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoDTOToUserInfo;
 import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfoToUserInfoDTO;
-import static java.util.stream.Collectors.toList;
 
 
 @Service
@@ -124,11 +121,4 @@ public class UserService {
     public UserDto getUser(UUID userId) {
         return userToUserDTO.apply(userRepository.findById(userId).orElseThrow());
     }
-
-
-//    public UserInfoDto addLikedLocation(UserDto userDto) {
-//
-//
-//
-//    }
 }
