@@ -35,7 +35,7 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany (mappedBy = "comment")
+    @OneToMany (mappedBy = "user")
     private List<Comment> userComments;
 
     @OneToOne (cascade = CascadeType.ALL)
