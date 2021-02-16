@@ -27,7 +27,7 @@ public class Location {
     private String country;
     private String city;
 
-    @OneToMany
+    @OneToMany (mappedBy = "location")
     private List<Comment> locationComments;
 
     @ManyToMany(mappedBy = "visitedLocations")

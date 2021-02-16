@@ -34,4 +34,10 @@ public class Comment {
     @JoinColumn (name = "location_id")
     private Location location;
 
+    public Comment(LocalDateTime created, String text, User user, Location location) {
+        this.created = created;
+        this.text = text;
+        this.user = user;
+        this.location = location;
+    }
 }
