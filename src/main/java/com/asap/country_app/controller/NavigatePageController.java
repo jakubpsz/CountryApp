@@ -15,6 +15,4 @@ public class NavigatePageController {
     public String login() {
         return "login/login";
     }
-
-
 }

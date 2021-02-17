@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ExchangeRateServiceImpl implements ExchangeRateService {
+
     private final CurrencyExchangeDataExtractor currencyExchangeDataExtractor;
 
     public ExchangeRateServiceImpl(CurrencyExchangeDataExtractor currencyExchangeDataExtractor) {

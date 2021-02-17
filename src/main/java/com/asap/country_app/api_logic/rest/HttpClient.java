@@ -67,7 +67,6 @@ public class HttpClient {
 
     }
 
-    //TODO investigate @Value annotation from Spring
     @SneakyThrows
     private String getProperty(String key) {
         try (InputStream input = new FileInputStream("src/main/resources/http.properties")) {

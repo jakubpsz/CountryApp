@@ -1,6 +1,6 @@
 package com.asap.country_app.database.Functions;
 
-import com.asap.country_app.database.user.Location;
+import com.asap.country_app.database.model.Location;
 import com.asap.country_app.dto.LocationDto;
 
 import java.util.function.Function;

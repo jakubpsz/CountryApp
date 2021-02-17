@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-
 @RestController
 @Slf4j
 @RequestMapping("/user")
@@ -38,12 +37,7 @@ public class UserController {
         return userService.saveUser(userDto);
     }
 
-//    @PutMapping
-//    @ResponseStatus(HttpStatus.OK)
-//    public UserInfoDto editUserInfo(@RequestBody UserDto userDto) {
-//        return userService.editUserInfo(userDto);
-//    }
-
+    //TODO change the implementation
     @PutMapping ("/like")
     @ResponseStatus(HttpStatus.OK)
     public String addLikedLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
@@ -54,6 +48,7 @@ public class UserController {
         }
     }
 
+    //TODO change the implementation
     @PutMapping ("/visited")
     @ResponseStatus(HttpStatus.OK)
     public String addVisitedLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
@@ -64,6 +59,7 @@ public class UserController {
         }
     }
 
+    //TODO change the implementation
     @PutMapping ("/wantToVisit")
     @ResponseStatus(HttpStatus.OK)
     public String addWantedToVisitLocation(@RequestBody LocationDto locationDto, @RequestParam(name = "id") UUID userId) {
@@ -74,6 +70,8 @@ public class UserController {
         }
     }
 
+
+    //TODO for future cleanup
 //    @PutMapping
 //    @ResponseStatus(HttpStatus.OK)
 //    public UserInfoDto addVisitedLocation(@RequestBody UserDto userDto) {

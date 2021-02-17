@@ -1,4 +1,4 @@
-package com.asap.country_app.database.user;
+package com.asap.country_app.database.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
