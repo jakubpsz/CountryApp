@@ -1,4 +1,4 @@
-package com.asap.country_app.database.user;
+package com.asap.country_app.database.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -56,6 +56,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "location_id")
     )
     private List<Location> likedLocations;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "location_Wanted_To_Visit",

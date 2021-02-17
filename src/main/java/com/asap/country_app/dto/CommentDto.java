@@ -1,7 +1,7 @@
 package com.asap.country_app.dto;
 
-import com.asap.country_app.database.user.Location;
-import com.asap.country_app.database.user.User;
+import com.asap.country_app.database.model.Location;
+import com.asap.country_app.database.model.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

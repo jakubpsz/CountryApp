@@ -1,4 +1,4 @@
-package com.asap.country_app.database.user;
+package com.asap.country_app.database.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +37,7 @@ public class Location {
     @ManyToMany(mappedBy = "locationsWantedToVisit")
     private List<User> whoWantsToVisit;
 
+    //TODO check if this constructor is used, if not - remove
     public Location(String country, String city, List<User> visitors, List<User> likes, List<User> whoWantsToVisit) {
         this.country = country;
         this.city = city;

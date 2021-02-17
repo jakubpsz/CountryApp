@@ -1,4 +1,4 @@
-package com.asap.country_app.database.user;
+package com.asap.country_app.database.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,6 +27,7 @@ public class Comment {
     private LocalDateTime created;
     private String text;
 
+    //TODO check if CascadeType.ALL will remove all comments and locations from database if user is deleted
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "user_id")
     private User user;

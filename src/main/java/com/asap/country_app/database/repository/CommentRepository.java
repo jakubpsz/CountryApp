@@ -1,6 +1,6 @@
 package com.asap.country_app.database.repository;
 
-import com.asap.country_app.database.user.Comment;
+import com.asap.country_app.database.model.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

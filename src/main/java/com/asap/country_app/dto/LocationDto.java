@@ -29,9 +29,4 @@ public class LocationDto {
         this.country = country;
         this.city = city;
     }
-
-    public LocationDto(String country, String city) {
-        this.country = country;
-        this.city = city;
-    }
 }

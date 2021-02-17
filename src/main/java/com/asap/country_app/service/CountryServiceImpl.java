@@ -14,7 +14,6 @@ public class CountryServiceImpl implements CountryService {
         this.countryDataExtractor = countryDataExtractor;
     }
 
-
     @Override
     public Country getCountry(String countryName) throws UnirestException {
         return countryDataExtractor.getCountry(countryName);

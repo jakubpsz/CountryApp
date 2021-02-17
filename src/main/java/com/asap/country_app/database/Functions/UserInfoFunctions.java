@@ -1,6 +1,6 @@
 package com.asap.country_app.database.Functions;
 
-import com.asap.country_app.database.user.UserInfo;
+import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.UserInfoDto;
 
 import java.util.function.Function;
