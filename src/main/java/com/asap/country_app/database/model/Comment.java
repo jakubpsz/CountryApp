@@ -29,16 +29,16 @@ public class Comment {
 
     //TODO check if CascadeType.ALL will remove all comments and locations from database if user is deleted
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn (name = "user_id")
-    private User user;
+    private AppUser appUser;
+
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "location_id")
     private Location location;
 
-    public Comment(LocalDateTime created, String text, User user, Location location) {
+    public Comment(LocalDateTime created, String text, AppUser appUser, Location location) {
         this.created = created;
         this.text = text;
-        this.user = user;
+        this.appUser = appUser;
         this.location = location;
     }
 }

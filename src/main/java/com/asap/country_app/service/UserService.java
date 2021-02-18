@@ -4,7 +4,7 @@ import com.asap.country_app.database.errors.UserNotFoundException;
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
 import com.asap.country_app.database.model.Location;
-import com.asap.country_app.database.model.User;
+import com.asap.country_app.database.model.AppUser;
 import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.LocationDto;
 import com.asap.country_app.dto.UserDto;
@@ -39,7 +39,7 @@ public class UserService {
     public UserDto saveUser(UserDto userDto) {
 //TODO sprawdzenie wielkosci liter w mailu?
         if (userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
-            User user = userDTOToUserCreate.apply(userDto);
+            AppUser user = userDTOToUserCreate.apply(userDto);
             user.setUserInfo(new UserInfo());
             log.info("User created: " + userDto.getEmail());
             return userToUserDTOCreate.apply(userRepository.save(user));
@@ -52,14 +52,14 @@ public class UserService {
 
     @Transactional
     public void deleteUser(UUID id) throws UserNotFoundException {
-        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        AppUser user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
         userRepository.delete(user);
     }
 
     @Transactional
     public boolean addLikedLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getLikedLocations();
         log.info("User {} change status liked for location {} to", userId, locationDto.getCity());
@@ -74,7 +74,7 @@ public class UserService {
     @Transactional
     public boolean addVisitedLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getVisitedLocations();
         log.info("User {} change status visited for location {} to", userId, locationDto.getCity());
@@ -102,7 +102,7 @@ public class UserService {
     @Transactional
     public boolean addWantToVisitLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser user = userRepository.findById(userId).orElseGet(null);
 
         List<Location> list = user.getLocationsWantedToVisit();
         log.info("User {} change status WantToVisit for location {} to", userId, locationDto.getCity());

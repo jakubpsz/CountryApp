@@ -2,7 +2,7 @@ package com.asap.country_app.service;
 
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
-import com.asap.country_app.database.model.User;
+import com.asap.country_app.database.model.AppUser;
 import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +27,7 @@ public class UserInfoService {
 
     @Transactional
     public UserInfoDto editUserInfo(UserInfoDto userInfoDto, UUID userId){
-        User user = userRepository.findById(userId).orElseThrow();
+        AppUser user = userRepository.findById(userId).orElseThrow();
         UserInfo old = user.getUserInfo();
         user.setUserInfo(userInfoDTOToUserInfo.apply(userInfoDto));
         userInfoRepository.delete(old);
@@ -37,7 +37,7 @@ public class UserInfoService {
 
     @Transactional
     public UserInfoDto getUserInfo(UUID userId){
-        User user = userRepository.findById(userId).orElseThrow();
+        AppUser user = userRepository.findById(userId).orElseThrow();
         return userInfoToUserInfoDTO.apply(user.getUserInfo());
     }
 }

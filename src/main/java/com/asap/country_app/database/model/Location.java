@@ -31,14 +31,14 @@ public class Location {
     private List<Comment> locationComments;
 
     @ManyToMany(mappedBy = "visitedLocations")
-    private List<User> visitors;
+    private List<AppUser> visitors;
     @ManyToMany(mappedBy = "likedLocations")
-    private List<User> likes;
+    private List<AppUser> likes;
     @ManyToMany(mappedBy = "locationsWantedToVisit")
-    private List<User> whoWantsToVisit;
+    private List<AppUser> whoWantsToVisit;
 
     //TODO check if this constructor is used, if not - remove
-    public Location(String country, String city, List<User> visitors, List<User> likes, List<User> whoWantsToVisit) {
+    public Location(String country, String city, List<AppUser> visitors, List<AppUser> likes, List<AppUser> whoWantsToVisit) {
         this.country = country;
         this.city = city;
         this.visitors = visitors;

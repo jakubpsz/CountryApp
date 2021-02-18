@@ -10,7 +10,7 @@ public class CommentFunction {
     public static final Function<Comment, CommentDto> commentToCommentDTO = comment -> new CommentDto(
             comment.getCreated(),
             comment.getText(),
-            comment.getUser(),
+            comment.getAppUser(),
             comment.getLocation()
     );
 
