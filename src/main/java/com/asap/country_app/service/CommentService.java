@@ -30,18 +30,10 @@ public class CommentService {
 
     @Transactional
     public CommentDto addComment(CommentDto commentDto){
-        Comment comment = commentDTOToComment.apply(commentDto);
-        return commentToCommentDTO.apply(commentRepository.save(comment));
-//        Location location = locationRepository.findLocationByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-//        if(location == null){
-//            location = locationDTOToLocation.apply(locationDto);
-//            log.info("Save Location");
-//            return locationToLocationDTO.apply(locationRepository.save(location));
-//        }else {
-//            log.warn("Location existed early");
-//            return locationDto;
-//        }
-
+        Comment comment = new Comment(commentDto.getCreated(),commentDto.getText(),commentDto.getUser(),commentDto.getLocation());
+        Comment savedComment = commentRepository.save(comment);
+        return new CommentDto(savedComment.getId(),savedComment.getCreated(),savedComment.getText(),
+                savedComment.getUser(),savedComment.getLocation());
     }
 
 //    @Transactional
