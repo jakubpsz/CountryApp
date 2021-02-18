@@ -5,7 +5,11 @@ import com.asap.country_app.database.repository.CommentRepository;
 import com.asap.country_app.dto.CommentDto;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Table;
 import javax.transaction.Transactional;
+import java.util.List;
+import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class CommentService {
@@ -23,6 +27,14 @@ public class CommentService {
         Comment savedComment = commentRepository.save(comment);
         return new CommentDto(savedComment.getId(),savedComment.getCreated(),savedComment.getText(),
                 savedComment.getAppUser(),savedComment.getLocation());
+    }
+
+    @Transactional
+    public List<CommentDto> findCommentsAboutLocation(UUID locationId){
+
+        return commentRepository.findCommentsByLocation_Id(locationId).stream().map(comment ->
+                new CommentDto(comment.getId(),comment.getCreated(),
+                        comment.getText(),comment.getAppUser(),comment.getLocation())).collect(Collectors.toList());
     }
 
 //    @Transactional
