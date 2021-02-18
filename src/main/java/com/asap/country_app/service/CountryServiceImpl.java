@@ -1,7 +1,7 @@
 package com.asap.country_app.service;
 
-import com.asap.country_app.logic.geo.Country;
-import com.asap.country_app.logic.geo.CountryDataExtractor;
+import com.asap.country_app.api_logic.geo.Country;
+import com.asap.country_app.api_logic.geo.CountryDataExtractor;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +13,6 @@ public class CountryServiceImpl implements CountryService {
     public CountryServiceImpl(CountryDataExtractor countryDataExtractor) {
         this.countryDataExtractor = countryDataExtractor;
     }
-
 
     @Override
     public Country getCountry(String countryName) throws UnirestException {
