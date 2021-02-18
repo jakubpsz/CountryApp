@@ -8,6 +8,7 @@ import java.util.UUID;
 
 @Data
 @AllArgsConstructor
+//TODO do we need no args constructor
 @NoArgsConstructor
 public class UserDto {
 
@@ -24,24 +25,10 @@ public class UserDto {
 
         private List<LocationDto> locationsWantedToVisit;
 
-        public UserDto(String email, String password) {
-                this.email = email;
-                this.password = password;
-        }
-
         public UserDto(UUID id, String email, String password) {
                 this.id = id;
                 this.email = email;
                 this.password = password;
-        }
-
-        public UserDto(String email, String password, UserInfoDto userInfoDto, List<LocationDto> visitedLocations, List<LocationDto> likedLocations, List<LocationDto> locationsWantedToVisit) {
-                this.email = email;
-                this.password = password;
-                this.userInfoDto = userInfoDto;
-                this.visitedLocations = visitedLocations;
-                this.likedLocations = likedLocations;
-                this.locationsWantedToVisit = locationsWantedToVisit;
         }
 }
 

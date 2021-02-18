@@ -1,6 +1,6 @@
 package com.asap.country_app.database.Functions;
 
-import com.asap.country_app.database.user.Comment;
+import com.asap.country_app.database.model.Comment;
 import com.asap.country_app.dto.CommentDto;
 
 import java.util.function.Function;

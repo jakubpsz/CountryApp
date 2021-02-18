@@ -2,8 +2,8 @@ package com.asap.country_app.service;
 
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
-import com.asap.country_app.database.user.User;
-import com.asap.country_app.database.user.UserInfo;
+import com.asap.country_app.database.model.User;
+import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -16,6 +16,7 @@ public class WikiDataExtractor {
         this.httpClient = httpClient;
     }
 
+    //TODO make parsing of json via object mapper
     public String getData(String cityName) throws UnirestException {
         HttpResponse<JsonNode> response = httpClient.getWikiData(cityName);
         JSONObject jsonObject = response.getBody().getObject().getJSONObject("query").getJSONObject("pages");
