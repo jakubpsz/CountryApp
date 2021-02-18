@@ -1,4 +1,4 @@
-let form = document.forms['register1']
+let form = document.forms['login']
 let email = form['email'];
 let password = form['password'];
 
@@ -11,8 +11,8 @@ function buttonFind(event) {
         password: password.value
     }
 
-    
-    fetch("register", {
+    //TODO zrobić to tak jak to powinno być
+    fetch("login", {
         method: "post",
         headers: {
             "Content-Type": "application/json"

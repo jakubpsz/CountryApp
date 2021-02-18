@@ -26,6 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
+<<<<<<< HEAD
     @GetMapping
     public AppUserDto getUser(@RequestParam UUID userId) {
         return userService.getUser(userId);
@@ -35,6 +36,30 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED) //TODO Ivan ustawic status zeby byl inny gdy blad
     public AppUserDto saveUser(@RequestBody AppUserDto appUserDto) {
         return userService.saveUser(appUserDto);
+=======
+    @CrossOrigin
+    @PostMapping("/register")
+    public String addUser(@RequestBody User user) {
+        log.info("Register user email={} password={}", user.getEmail(), user.getPassword());
+        if (userService.createUser(user)) {
+            return "Success register for " + user.getEmail();
+        } else {
+            return "Failed register for " + user.getEmail();
+        }
+    }
+
+    //TODO create login for users, cookie?
+    @PostMapping("/login")
+    public List<User> login() {
+        log.info("Login success");
+        return userService.getUsers();
+    }
+
+    @GetMapping("/users")
+    public List<User> getUsers() {
+        log.info("Requested all users");
+        return userService.getUsers();
+>>>>>>> master
     }
 
     //TODO change the implementation

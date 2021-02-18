@@ -1,12 +1,12 @@
 body {
-    background-image: url('../pictures/background.jpg');
+    background-image: url("../pictures/mapofword.jpeg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
 
     margin: auto auto;
-}
 
+}
 .page {
     position: center;
     width: 1200px;
@@ -44,7 +44,7 @@ header {
 }
 
 .nav {
-        float: right;
+    float: right;
     display: inline-block;
     padding: 15px;
     background-color: beige;
@@ -103,6 +103,7 @@ input.hidden {
     border: 2px solid #03b1ce;
 }
 
+
 .tital {
     font-size: 16px;
     font-weight: 500;
@@ -112,6 +113,7 @@ input.hidden {
     border-bottom: 1px #f8f8f8 solid;
     margin: 5px 0 5px 0
 }
+
 
 #parent {
     list-style: none;
