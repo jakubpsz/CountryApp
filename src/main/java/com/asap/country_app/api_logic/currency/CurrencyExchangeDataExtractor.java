@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CurrencyExchangeDataExtractor {
 
-    private HttpClient httpClient;
+    private final HttpClient httpClient;
 
     public CurrencyExchangeDataExtractor(HttpClient httpClient) {
         this.httpClient = httpClient;

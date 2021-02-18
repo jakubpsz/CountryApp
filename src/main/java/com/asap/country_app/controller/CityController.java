@@ -32,11 +32,8 @@ public class CityController {
             return mapper.writeValueAsString(cityService.getCity(countryName, cityName));
         } catch (JsonProcessingException | UnirestException | JSONException e) {
             log.error("Not able to get city={} info {}", cityName, e.getMessage());
-<<<<<<< HEAD
-=======
             //TODO or change to JsonProcessingException
 //            return mapper.writeValueAsString("There isn't that location, try again");
->>>>>>> master
             throw e;
         }
     }

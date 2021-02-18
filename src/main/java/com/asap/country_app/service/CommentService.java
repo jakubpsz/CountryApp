@@ -5,7 +5,6 @@ import com.asap.country_app.database.repository.CommentRepository;
 import com.asap.country_app.dto.CommentDto;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Table;
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.UUID;
