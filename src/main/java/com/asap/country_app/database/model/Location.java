@@ -37,15 +37,6 @@ public class Location {
     @ManyToMany(mappedBy = "locationsWantedToVisit")
     private List<AppUser> whoWantsToVisit;
 
-    //TODO check if this constructor is used, if not - remove
-    public Location(String country, String city, List<AppUser> visitors, List<AppUser> likes, List<AppUser> whoWantsToVisit) {
-        this.country = country;
-        this.city = city;
-        this.visitors = visitors;
-        this.likes = likes;
-        this.whoWantsToVisit = whoWantsToVisit;
-    }
-
     public Location(String country, String city) {
         this.country = country;
         this.city = city;

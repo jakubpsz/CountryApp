@@ -65,13 +65,6 @@ public class AppUser {
     )
     private List<Location> locationsWantedToVisit;
 
-
-    public AppUser(UUID id, String email, String password) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-    }
-
     public AppUser(String email, String password, UserInfo userInfo, List<Location> visitedLocations, List<Location> likedLocations, List<Location> locationsWantedToVisit) {
         this.email = email;
         this.password = password;
