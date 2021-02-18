@@ -1,7 +1,7 @@
 package com.asap.country_app.database.Functions;
 
-import com.asap.country_app.database.model.User;
-import com.asap.country_app.dto.UserDto;
+import com.asap.country_app.database.model.AppUser;
+import com.asap.country_app.dto.AppUserDto;
 
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -13,18 +13,18 @@ import static com.asap.country_app.database.Functions.UserInfoFunctions.userInfo
 
 public class UserFunctions {
 
-    public static final Function<User, UserDto> userToUserDTOCreate = user ->  new UserDto(
+    public static final Function<AppUser, AppUserDto> userToUserDTOCreate = user ->  new AppUserDto(
             user.getId(),
             user.getEmail(),
             user.getPassword()
     );
 
-    public static final Function<UserDto,User> userDTOToUserCreate = userDto -> new User(
-            userDto.getEmail(),
-            userDto.getPassword()
+    public static final Function<AppUserDto, AppUser> userDTOToUserCreate = appUserDto -> new AppUser(
+            appUserDto.getEmail(),
+            appUserDto.getPassword()
     );
 
-    public static final Function<User, UserDto> userToUserDTO = user ->  new UserDto(
+    public static final Function<AppUser, AppUserDto> userToUserDTO = user ->  new AppUserDto(
             user.getId(),
             user.getEmail(),
             user.getPassword(),
@@ -34,12 +34,12 @@ public class UserFunctions {
             user.getVisitedLocations().stream().map(locationToLocationDTO).collect(Collectors.toList())
     );
 
-    public static final Function<UserDto,User> userDTOToUser = userDto -> new User(
-            userDto.getEmail(),
-            userDto.getPassword(),
-            userInfoDTOToUserInfo.apply(userDto.getUserInfoDto()),
-            userDto.getLocationsWantedToVisit().stream().map(locationDTOToLocation).collect(Collectors.toList()),
-            userDto.getLikedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList()),
-            userDto.getVisitedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList())
+    public static final Function<AppUserDto, AppUser> userDTOToUser = appUserDto -> new AppUser(
+            appUserDto.getEmail(),
+            appUserDto.getPassword(),
+            userInfoDTOToUserInfo.apply(appUserDto.getUserInfoDto()),
+            appUserDto.getLocationsWantedToVisit().stream().map(locationDTOToLocation).collect(Collectors.toList()),
+            appUserDto.getLikedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList()),
+            appUserDto.getVisitedLocations().stream().map(locationDTOToLocation).collect(Collectors.toList())
     );
 }

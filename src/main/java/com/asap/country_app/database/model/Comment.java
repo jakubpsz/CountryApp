@@ -3,6 +3,7 @@ package com.asap.country_app.database.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -22,6 +23,7 @@ public class Comment {
 
     @GeneratedValue
     @Id
+    @Type(type="org.hibernate.type.UUIDCharType")
     private UUID id;
 
     private LocalDateTime created;
@@ -30,15 +32,15 @@ public class Comment {
     //TODO check if CascadeType.ALL will remove all comments and locations from database if user is deleted
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "user_id")
-    private User user;
+    private AppUser appUser;
     @ManyToOne (fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn (name = "location_id")
     private Location location;
 
-    public Comment(LocalDateTime created, String text, User user, Location location) {
+    public Comment(LocalDateTime created, String text, AppUser appUser, Location location) {
         this.created = created;
         this.text = text;
-        this.user = user;
+        this.appUser = appUser;
         this.location = location;
     }
 }

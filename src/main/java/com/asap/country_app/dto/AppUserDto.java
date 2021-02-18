@@ -10,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 //TODO do we need no args constructor
 @NoArgsConstructor
-public class UserDto {
+public class AppUserDto {
 
         private UUID id;
 
@@ -25,7 +25,7 @@ public class UserDto {
 
         private List<LocationDto> locationsWantedToVisit;
 
-        public UserDto(UUID id, String email, String password) {
+        public AppUserDto(UUID id, String email, String password) {
                 this.id = id;
                 this.email = email;
                 this.password = password;

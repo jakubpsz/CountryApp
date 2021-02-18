@@ -23,7 +23,7 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class AppUser {
 
     @Id
     @GeneratedValue
@@ -35,7 +35,7 @@ public class User {
     private String email;
     private String password;
 
-    @OneToMany (mappedBy = "user")
+    @OneToMany (mappedBy = "appUser")
     private List<Comment> userComments;
 
     @OneToOne (cascade = CascadeType.ALL)
@@ -66,13 +66,13 @@ public class User {
     private List<Location> locationsWantedToVisit;
 
 
-    public User(UUID id, String email, String password) {
+    public AppUser(UUID id, String email, String password) {
         this.id = id;
         this.email = email;
         this.password = password;
     }
 
-    public User(String email, String password, UserInfo userInfo, List<Location> visitedLocations, List<Location> likedLocations, List<Location> locationsWantedToVisit) {
+    public AppUser(String email, String password, UserInfo userInfo, List<Location> visitedLocations, List<Location> likedLocations, List<Location> locationsWantedToVisit) {
         this.email = email;
         this.password = password;
         this.userInfo = userInfo;
@@ -81,7 +81,7 @@ public class User {
         this.locationsWantedToVisit = locationsWantedToVisit;
     }
 
-    public User(String email, String password) {
+    public AppUser(String email, String password) {
         this.email = email;
         this.password = password;
     }

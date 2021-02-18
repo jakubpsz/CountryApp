@@ -18,11 +18,11 @@ public class LocationDto {
     private String country;
     private String city;
 
-    private List<UserDto> visitedLocationsDto;
+    private List<AppUserDto> visitedLocationsDto;
 
-    private List<UserDto> likedLocationsDto;
+    private List<AppUserDto> likedLocationsDto;
 
-    private List<UserDto> locationsWantedToVisitDto;
+    private List<AppUserDto> locationsWantedToVisitDto;
 
     public LocationDto(UUID id, String country, String city) {
         this.id = id;

@@ -1,7 +1,7 @@
 package com.asap.country_app.controller;
 
 import com.asap.country_app.dto.LocationDto;
-import com.asap.country_app.dto.UserDto;
+import com.asap.country_app.dto.AppUserDto;
 import com.asap.country_app.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -27,14 +27,14 @@ public class UserController {
     }
 
     @GetMapping
-    public UserDto getUser(@RequestParam UUID userId) {
+    public AppUserDto getUser(@RequestParam UUID userId) {
         return userService.getUser(userId);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED) //TODO Ivan ustawic status zeby byl inny gdy blad
-    public UserDto saveUser(@RequestBody UserDto userDto) {
-        return userService.saveUser(userDto);
+    public AppUserDto saveUser(@RequestBody AppUserDto appUserDto) {
+        return userService.saveUser(appUserDto);
     }
 
     //TODO change the implementation

@@ -10,14 +10,14 @@ public class CommentFunction {
     public static final Function<Comment, CommentDto> commentToCommentDTO = comment -> new CommentDto(
             comment.getCreated(),
             comment.getText(),
-            comment.getUser(),
+            comment.getAppUser(),
             comment.getLocation()
     );
 
     public static final Function<CommentDto, Comment> commentDTOToComment = commentDto -> new Comment(
             commentDto.getCreated(),
             commentDto.getText(),
-            commentDto.getUser(),
+            commentDto.getAppUser(),
             commentDto.getLocation()
     );
 }

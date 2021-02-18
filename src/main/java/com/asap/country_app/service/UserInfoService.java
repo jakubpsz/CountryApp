@@ -2,7 +2,7 @@ package com.asap.country_app.service;
 
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
-import com.asap.country_app.database.model.User;
+import com.asap.country_app.database.model.AppUser;
 import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.UserInfoDto;
 import lombok.extern.slf4j.Slf4j;
@@ -27,17 +27,17 @@ public class UserInfoService {
 
     @Transactional
     public UserInfoDto editUserInfo(UserInfoDto userInfoDto, UUID userId){
-        User user = userRepository.findById(userId).orElseThrow();
-        UserInfo old = user.getUserInfo();
-        user.setUserInfo(userInfoDTOToUserInfo.apply(userInfoDto));
+        AppUser appUser = userRepository.findById(userId).orElseThrow();
+        UserInfo old = appUser.getUserInfo();
+        appUser.setUserInfo(userInfoDTOToUserInfo.apply(userInfoDto));
         userInfoRepository.delete(old);
-        log.info("UserInfo for " + user.getEmail() + " " + user.getId() + " is changed: " + user.getUserInfo());
-        return userInfoToUserInfoDTO.apply(userRepository.save(user).getUserInfo());
+        log.info("UserInfo for " + appUser.getEmail() + " " + appUser.getId() + " is changed: " + appUser.getUserInfo());
+        return userInfoToUserInfoDTO.apply(userRepository.save(appUser).getUserInfo());
     }
 
     @Transactional
     public UserInfoDto getUserInfo(UUID userId){
-        User user = userRepository.findById(userId).orElseThrow();
-        return userInfoToUserInfoDTO.apply(user.getUserInfo());
+        AppUser appUser = userRepository.findById(userId).orElseThrow();
+        return userInfoToUserInfoDTO.apply(appUser.getUserInfo());
     }
 }

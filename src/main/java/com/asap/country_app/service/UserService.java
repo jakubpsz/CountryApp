@@ -4,10 +4,10 @@ import com.asap.country_app.database.errors.UserNotFoundException;
 import com.asap.country_app.database.repository.UserInfoRepository;
 import com.asap.country_app.database.repository.UserRepository;
 import com.asap.country_app.database.model.Location;
-import com.asap.country_app.database.model.User;
+import com.asap.country_app.database.model.AppUser;
 import com.asap.country_app.database.model.UserInfo;
 import com.asap.country_app.dto.LocationDto;
-import com.asap.country_app.dto.UserDto;
+import com.asap.country_app.dto.AppUserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -36,15 +36,15 @@ public class UserService {
     }
 
     @Transactional
-    public UserDto saveUser(UserDto userDto) {
+    public AppUserDto saveUser(AppUserDto appUserDto) {
 //TODO sprawdzenie wielkosci liter w mailu?
-        if (userRepository.findByEmail(userDto.getEmail()).isEmpty()) {
-            User user = userDTOToUserCreate.apply(userDto);
-            user.setUserInfo(new UserInfo());
-            log.info("User created: " + userDto.getEmail());
-            return userToUserDTOCreate.apply(userRepository.save(user));
+        if (userRepository.findByEmail(appUserDto.getEmail()).isEmpty()) {
+            AppUser appUser = userDTOToUserCreate.apply(appUserDto);
+            appUser.setUserInfo(new UserInfo());
+            log.info("User created: " + appUserDto.getEmail());
+            return userToUserDTOCreate.apply(userRepository.save(appUser));
         } else {
-            log.info("This mail exists: " + userDto.getEmail());
+            log.info("This mail exists: " + appUserDto.getEmail());
             //TODO if there will be time refactor to throw exepction, if not - leave as is
             return null;
         }
@@ -52,21 +52,21 @@ public class UserService {
 
     @Transactional
     public void deleteUser(UUID id) throws UserNotFoundException {
-        User user = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
-        userRepository.delete(user);
+        AppUser appUser = userRepository.findById(id).orElseThrow(UserNotFoundException::new);
+        userRepository.delete(appUser);
     }
 
     @Transactional
     public boolean addLikedLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser appUser = userRepository.findById(userId).orElseGet(null);
 
-        List<Location> list = user.getLikedLocations();
+        List<Location> list = appUser.getLikedLocations();
         log.info("User {} change status liked for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, location, list);
 
-        user.setLikedLocations(list);
-        userRepository.save(user);
+        appUser.setLikedLocations(list);
+        userRepository.save(appUser);
 
         return true;
     }
@@ -74,14 +74,14 @@ public class UserService {
     @Transactional
     public boolean addVisitedLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser appUser = userRepository.findById(userId).orElseGet(null);
 
-        List<Location> list = user.getVisitedLocations();
+        List<Location> list = appUser.getVisitedLocations();
         log.info("User {} change status visited for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, location, list);
 
-        user.setVisitedLocations(list);
-        userRepository.save(user);
+        appUser.setVisitedLocations(list);
+        userRepository.save(appUser);
         log.info("User {} remove {}");
         return true;
     }
@@ -102,19 +102,19 @@ public class UserService {
     @Transactional
     public boolean addWantToVisitLocation(LocationDto locationDto, UUID userId) {
         Location location = locationService.findByCountryAndCity(locationDto.getCountry(), locationDto.getCity());
-        User user = userRepository.findById(userId).orElseGet(null);
+        AppUser appUser = userRepository.findById(userId).orElseGet(null);
 
-        List<Location> list = user.getLocationsWantedToVisit();
+        List<Location> list = appUser.getLocationsWantedToVisit();
         log.info("User {} change status WantToVisit for location {} to", userId, locationDto.getCity());
         changeLocationStatus(locationDto, location, list);
 
-        user.setLocationsWantedToVisit(list);
-        userRepository.save(user);
+        appUser.setLocationsWantedToVisit(list);
+        userRepository.save(appUser);
         return true;
     }
 
 
-    public UserDto getUser(UUID userId) {
+    public AppUserDto getUser(UUID userId) {
         return userToUserDTO.apply(userRepository.findById(userId).orElseThrow());
     }
 }
